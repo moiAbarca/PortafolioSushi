@@ -14,9 +14,9 @@ import java.sql.Time;
  */
 public class PedidoCabecera {
     private int pedidoCabeceraId;
-    private Establecimiento establecimientoId;
-    private Canal canalId;
-    private Cliente clienteId;
+    private int establecimientoId;
+    private int canalId;
+    private int clienteId;
     private Date fechaPedido;
     private Time horaPedido;
     private String estadoPedido;
@@ -38,42 +38,42 @@ public class PedidoCabecera {
     /**
      * @return the establecimientoId
      */
-    public Establecimiento getEstablecimientoId() {
+    public int getEstablecimientoId() {
         return establecimientoId;
     }
 
     /**
      * @param establecimientoId the establecimientoId to set
      */
-    public void setEstablecimientoId(Establecimiento establecimientoId) {
+    public void setEstablecimientoId(int establecimientoId) {
         this.establecimientoId = establecimientoId;
     }
 
     /**
      * @return the canalId
      */
-    public Canal getCanalId() {
+    public int getCanalId() {
         return canalId;
     }
 
     /**
      * @param canalId the canalId to set
      */
-    public void setCanalId(Canal canalId) {
+    public void setCanalId(int canalId) {
         this.canalId = canalId;
     }
 
     /**
      * @return the clienteId
      */
-    public Cliente getClienteId() {
+    public int getClienteId() {
         return clienteId;
     }
 
     /**
      * @param clienteId the clienteId to set
      */
-    public void setClienteId(Cliente clienteId) {
+    public void setClienteId(int clienteId) {
         this.clienteId = clienteId;
     }
 

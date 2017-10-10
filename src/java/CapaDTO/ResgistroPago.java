@@ -11,8 +11,8 @@ package CapaDTO;
  */
 public class ResgistroPago {
     private int registroPagoId;
-    private TipoPago tipoPagoId;
-    private PedidoCabecera pedidoCabeceraId;
+    private int tipoPagoId;
+    private int pedidoCabeceraId;
     private String estadoPago;
     private int codigoAutorizacion;
     private int numeroCuotas;
@@ -35,28 +35,28 @@ public class ResgistroPago {
     /**
      * @return the tipoPagoId
      */
-    public TipoPago getTipoPagoId() {
+    public int getTipoPagoId() {
         return tipoPagoId;
     }
 
     /**
      * @param tipoPagoId the tipoPagoId to set
      */
-    public void setTipoPagoId(TipoPago tipoPagoId) {
+    public void setTipoPagoId(int tipoPagoId) {
         this.tipoPagoId = tipoPagoId;
     }
 
     /**
      * @return the pedidoCabeceraId
      */
-    public PedidoCabecera getPedidoCabeceraId() {
+    public int getPedidoCabeceraId() {
         return pedidoCabeceraId;
     }
 
     /**
      * @param pedidoCabeceraId the pedidoCabeceraId to set
      */
-    public void setPedidoCabeceraId(PedidoCabecera pedidoCabeceraId) {
+    public void setPedidoCabeceraId(int pedidoCabeceraId) {
         this.pedidoCabeceraId = pedidoCabeceraId;
     }
 

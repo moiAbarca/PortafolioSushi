@@ -12,7 +12,7 @@ package CapaDTO;
 public class Perfil {
     private int perfilId;
     private String nombrePerfil;
-    private Acceso accesoId;
+    private int accesoId;
 
     /**
      * @return the perfilId
@@ -45,14 +45,14 @@ public class Perfil {
     /**
      * @return the accesoId
      */
-    public Acceso getAccesoId() {
+    public int getAccesoId() {
         return accesoId;
     }
 
     /**
      * @param accesoId the accesoId to set
      */
-    public void setAccesoId(Acceso accesoId) {
+    public void setAccesoId(int accesoId) {
         this.accesoId = accesoId;
     }
     

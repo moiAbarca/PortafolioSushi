@@ -11,7 +11,7 @@ package CapaDTO;
  */
 public class Provincia {
     private int provinciaId;
-    private Region regionId;
+    private int regionId;
     private String provinciaNombre;
 
     /**
@@ -31,14 +31,14 @@ public class Provincia {
     /**
      * @return the regionId
      */
-    public Region getRegionId() {
+    public int getRegionId() {
         return regionId;
     }
 
     /**
      * @param regionId the regionId to set
      */
-    public void setRegionId(Region regionId) {
+    public void setRegionId(int regionId) {
         this.regionId = regionId;
     }
 

@@ -11,7 +11,7 @@ package CapaDTO;
  */
 public class Comuna {
     private int comunaId;
-    private Provincia provinciaId;
+    private int provinciaId;
     private String comunaNombre;
 
     /**
@@ -31,14 +31,14 @@ public class Comuna {
     /**
      * @return the provinciaId
      */
-    public Provincia getProvinciaId() {
+    public int getProvinciaId() {
         return provinciaId;
     }
 
     /**
      * @param provinciaId the provinciaId to set
      */
-    public void setProvinciaId(Provincia provinciaId) {
+    public void setProvinciaId(int provinciaId) {
         this.provinciaId = provinciaId;
     }
 

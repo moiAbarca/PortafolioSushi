@@ -11,10 +11,10 @@ package CapaDTO;
  */
 public class Seguimiento {
     private int seguimientoId;
-    private Canal canalId;
+    private int canalId;
     private String registro;
-    private Pagina paginaId;
-    private Cliente clienteId;
+    private int paginaId;
+    private int clienteId;
 
     /**
      * @return the seguimientoId
@@ -33,14 +33,14 @@ public class Seguimiento {
     /**
      * @return the canalId
      */
-    public Canal getCanalId() {
+    public int getCanalId() {
         return canalId;
     }
 
     /**
      * @param canalId the canalId to set
      */
-    public void setCanalId(Canal canalId) {
+    public void setCanalId(int canalId) {
         this.canalId = canalId;
     }
 
@@ -61,28 +61,28 @@ public class Seguimiento {
     /**
      * @return the paginaId
      */
-    public Pagina getPaginaId() {
+    public int getPaginaId() {
         return paginaId;
     }
 
     /**
      * @param paginaId the paginaId to set
      */
-    public void setPaginaId(Pagina paginaId) {
+    public void setPaginaId(int paginaId) {
         this.paginaId = paginaId;
     }
 
     /**
      * @return the clienteId
      */
-    public Cliente getClienteId() {
+    public int getClienteId() {
         return clienteId;
     }
 
     /**
      * @param clienteId the clienteId to set
      */
-    public void setClienteId(Cliente clienteId) {
+    public void setClienteId(int clienteId) {
         this.clienteId = clienteId;
     }
 }

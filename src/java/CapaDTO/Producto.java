@@ -11,7 +11,7 @@ package CapaDTO;
  */
 public class Producto {
     private int productoId;
-    private CategoriaProducto categoriaProductoId;
+    private int categoriaProductoId;
     private String nombreProducto;
     private int porcionesProdcuto;
     private int precioProducto;
@@ -36,14 +36,14 @@ public class Producto {
     /**
      * @return the categoriaProductoId
      */
-    public CategoriaProducto getCategoriaProductoId() {
+    public int getCategoriaProductoId() {
         return categoriaProductoId;
     }
 
     /**
      * @param categoriaProductoId the categoriaProductoId to set
      */
-    public void setCategoriaProductoId(CategoriaProducto categoriaProductoId) {
+    public void setCategoriaProductoId(int categoriaProductoId) {
         this.categoriaProductoId = categoriaProductoId;
     }
 

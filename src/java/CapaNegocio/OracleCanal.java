@@ -5,10 +5,9 @@
  */
 package CapaNegocio;
 
-
 import CapaConexion.Conecta;
-import CapaDTO.Administrador;
-import Clasesinterface.AdministradorDao;
+import CapaDTO.Canal;
+import Clasesinterface.CanalDao;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -21,21 +20,23 @@ import oracle.jdbc.OracleTypes;
  *
  * @author moi
  */
-public class OracleAdministrador implements AdministradorDao{
+public class OracleCanal implements CanalDao{
     //llama a la clase conecta...para conectarse a la BD
     public Conecta db;    
-    public OracleAdministrador()
+    public OracleCanal()
     {
         //constructor vacío
         db = new Conecta();
     }
+    
+    //Inicio de implementación de métodos de la Interface
 
     @Override
-    public List<Administrador> obtenerAdministrador() throws SQLException {
+    public List<Canal> obtenerCanal() throws SQLException {
         //Crea una lista de tipo Acceso
-        List<Administrador> cAdministrador = new ArrayList<Administrador>();  
+        List<Canal> cCanal = new ArrayList<Canal>();  
         //instancia la clase acceso
-        Administrador bAdministrador = new Administrador();
+        Canal bCanal = new Canal();
         String sql = null;
         Connection con = null;  
         //CallableStatement = me permite ejecutar sentencias SQL
@@ -48,7 +49,7 @@ public class OracleAdministrador implements AdministradorDao{
             con = db.getConnection();
             //el SP tiene solo un parámetro de salida
             //por eso solo tiene un ?
-            sql = "{call FUKUSUKESUSHI.LISTAR_ADMINISTRADOR(?)}";
+            sql = "{call FUKUSUKESUSHI.LISTAR_CANAL(?)}";
             //le paso al CallableStatement la sentencia SQL
             cs = con.prepareCall(sql);
             cs.registerOutParameter(1, OracleTypes.CURSOR);
@@ -61,14 +62,11 @@ public class OracleAdministrador implements AdministradorDao{
             //cuando se que va a devolver uno, ocupo un IF
             while(rs.next())
             {
-                bAdministrador = new Administrador();
-                bAdministrador.setAdministradorId(rs.getInt(1));
-                bAdministrador.setNombreAdmin(rs.getString(2));
-                bAdministrador.setApellidoAdmin(rs.getString(3));
-                bAdministrador.setCorrreoAdmin(rs.getString(4));
-                bAdministrador.setTelefonoAdmin(rs.getString(5));
-                bAdministrador.setUsuarioId(rs.getInt(6));
-                cAdministrador.add(bAdministrador);
+                bCanal = new Canal();
+                bCanal.setCanalId(rs.getInt(1));
+                bCanal.setNombreCanal(rs.getString(2));
+                
+                cCanal.add(bCanal);
             }
             rs.close();
             cs.close();
@@ -77,28 +75,24 @@ public class OracleAdministrador implements AdministradorDao{
         {
             e.printStackTrace();
         }
-        return cAdministrador;
+        return cCanal;
     }
 
     @Override
-    public void agregarAdministrador(Administrador administrador) throws SQLException {
-        Administrador bAdministrador = new Administrador();
+    public void agregarCanal(Canal canal) throws SQLException {
+        Canal bCanal = new Canal();
         String sql = null;
         Connection con = null;
         CallableStatement cs = null;         
         try
         {            
             con = db.getConnection();
-            //llama al insertar de la BD que tiene 6 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.ADMINISTRADOR_tapi.ins(?, ?, ?, ?, ?, ?)}";
+            //llama al insertar de la BD que tiene 3 parámetros de entrada 
+            sql = "{call FUKUSUKESUSHI.CANAL_tapi.ins(?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
-            cs.setInt(1, administrador.getAdministradorId());
-            cs.setString(2, administrador.getNombreAdmin());
-            cs.setString(3, administrador.getCorrreoAdmin());
-            cs.setString(4, administrador.getTelefonoAdmin());
-            cs.setString(5, administrador.getApellidoAdmin());
-            cs.setInt(6, administrador.getUsuarioId());
+            cs.setInt(1, canal.getCanalId());
+            cs.setString(2, canal.getNombreCanal());            
             cs.execute();          
             cs.close();
         }
@@ -110,8 +104,8 @@ public class OracleAdministrador implements AdministradorDao{
     }
 
     @Override
-    public void modificarAdministrador(Administrador administrador) throws SQLException {
-        Administrador bAdministrador = new Administrador();
+    public void modificarCanal(Canal canal) throws SQLException {
+        Canal bCanal = new Canal();
         String sql = null;
         Connection con = null;
         CallableStatement cs = null;         
@@ -119,14 +113,10 @@ public class OracleAdministrador implements AdministradorDao{
         {            
             con = db.getConnection();
             //llama al update de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.ADMINISTRADOR_tapi.upd(?, ?, ?,?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.CANAL_tapi.upd(?, ?)}";
             cs = con.prepareCall(sql);
-            cs.setInt(1, administrador.getAdministradorId());
-            cs.setString(2, administrador.getNombreAdmin());
-            cs.setString(3, administrador.getCorrreoAdmin());
-            cs.setString(4, administrador.getTelefonoAdmin());
-            cs.setString(5, administrador.getApellidoAdmin());
-            cs.setInt(6, administrador.getUsuarioId());
+            cs.setInt(1, canal.getCanalId());
+            cs.setString(2, canal.getNombreCanal());            
             cs.execute();          
             cs.close();
         }
@@ -138,7 +128,7 @@ public class OracleAdministrador implements AdministradorDao{
     }
 
     @Override
-    public void eliminarAdministrador(Integer id) throws SQLException {
+    public void eliminarCanal(Integer id) throws SQLException {
         String sql = null;
         Connection con = null;
         CallableStatement cs = null;         
@@ -146,7 +136,7 @@ public class OracleAdministrador implements AdministradorDao{
         {            
             con = db.getConnection();
             //llama al eliminar que recibe 1 parámetro
-            sql = "{call FUKUSUKESUSHI.ADMINISTRADOR_tapi.del(?)}";
+            sql = "{call FUKUSUKESUSHI.CANAL_tapi.del(?)}";
             cs = con.prepareCall(sql);
             //entrego el parámetro de entrada de la función 
             //y si existe en la BD lo borro
@@ -161,9 +151,9 @@ public class OracleAdministrador implements AdministradorDao{
     }
 
     @Override
-    public List<Administrador> buscarAdministrador(Integer id) throws SQLException {
-        List<Administrador> cAdministrador = new ArrayList<Administrador>();        
-        Administrador bAdministrador = new Administrador();
+    public List<Canal> buscarCanal(Integer id) throws SQLException {
+        List<Canal> cCanal = new ArrayList<Canal>();        
+        Canal bCanal = new Canal();
         String sql = null;
         Connection con = null;        
         CallableStatement cs = null;
@@ -174,7 +164,7 @@ public class OracleAdministrador implements AdministradorDao{
             //llama a la función de tiene dos parámetros
             //el primero de entrada
             //y el segundo de salida
-            sql = ("{call FUKUSUKESUSHI.BUSCAR_ADMINISTRADOR(?,?)}");            
+            sql = ("{call FUKUSUKESUSHI.BUSCAR_CANAL(?,?)}");            
             cs = con.prepareCall(sql);
             //seteo el primer parámetro
             cs.setInt(1, id); 
@@ -187,14 +177,10 @@ public class OracleAdministrador implements AdministradorDao{
             rs = (ResultSet)cs.getObject(2);
             if(rs.next())
             {
-                bAdministrador = new Administrador();
-                bAdministrador.setAdministradorId(rs.getInt(1));
-                bAdministrador.setNombreAdmin(rs.getString(2));
-                bAdministrador.setApellidoAdmin(rs.getString(3));
-                bAdministrador.setCorrreoAdmin(rs.getString(4));
-                bAdministrador.setTelefonoAdmin(rs.getString(5));
-                bAdministrador.setUsuarioId(rs.getInt(6));
-                cAdministrador.add(bAdministrador);
+                bCanal = new Canal();
+                bCanal.setCanalId(rs.getInt(1));
+                bCanal.setNombreCanal(rs.getString(2));                
+                cCanal.add(bCanal);
             }
             rs.close();
             
@@ -204,8 +190,6 @@ public class OracleAdministrador implements AdministradorDao{
         {
             e.printStackTrace();
         }
-        return cAdministrador;
-    
+        return cCanal;
     }
-    
 }
