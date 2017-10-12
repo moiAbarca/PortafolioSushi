@@ -5,10 +5,12 @@
  */
 package WebService;
 
+
 import CapaDTO.Producto;
 import CapaNegocio.OracleProducto;
 import Clasesinterface.ProductoDao;
 import java.sql.SQLException;
+import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -22,18 +24,23 @@ public class ServiceProducto {
 
 
 
-    /**
-     * This is a sample web service operation
-     */
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
+    List<Producto> Producto;
+    
+    //comienzo de los webServices    
+    @WebMethod(operationName = "obtenerProducto")        
+    public List<Producto> obtenerProducto()  
+    {
+        try{        
+        ProductoDao dao = new OracleProducto();      
+        Producto = dao.obtenerProducto();        
+        }
+        catch(Exception ex)
+        {}
+        return Producto;
     }
     
-    @WebMethod(operationName = "agregaProducto")        
-    public void agregaProducto(
-                                @WebParam(name = "producto") Producto producto                             
-                               )  
+    @WebMethod(operationName = "agregarProducto")        
+    public void agregarProducto(@WebParam(name = "producto") Producto producto)  
     {
         try{
         ProductoDao dao = new OracleProducto();
@@ -41,5 +48,41 @@ public class ServiceProducto {
         }
         catch(Exception ex)
         {}
+    }
+    
+
+    
+    @WebMethod(operationName = "modificarProducto")        
+    public void modificarProducto(@WebParam(name = "producto") Producto producto)  
+    {
+        try{
+        ProductoDao dao = new OracleProducto();
+        dao.modificarProducto(producto);
+        }
+        catch(Exception ex)
+        {}
+    }
+    
+    @WebMethod(operationName = "eliminarProducto")        
+    public void eliminarProducto(@WebParam(name = "id") Integer id)  
+    {
+        try{
+        ProductoDao dao = new OracleProducto();
+        dao.eliminarProducto(id);
+        }
+        catch(Exception ex)
+        {}
+    }
+    
+    @WebMethod(operationName = "buscarProducto")        
+    public List<Producto> buscarProducto(@WebParam(name = "id") Integer id)  
+    {
+        try{
+        ProductoDao dao = new OracleProducto();
+        Producto = dao.buscarProducto(id);
+        }
+        catch(Exception ex)
+        {}
+        return Producto;
     }
 }

@@ -6,6 +6,7 @@
 package CapaDTO;
 
 import java.sql.Date;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  *
@@ -125,6 +126,7 @@ public class Cliente {
     /**
      * @return the fechaNacimiento
      */
+    @XmlJavaTypeAdapter(SqlDateAdapter.class)
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }

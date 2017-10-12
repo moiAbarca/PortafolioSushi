@@ -7,6 +7,60 @@
     <service name="ServiceAcceso">
       <implementation-class>WebService.ServiceAcceso</implementation-class>
     </service>
+    <service name="ServiceAdministrador">
+      <implementation-class>WebService.ServiceAdministrador</implementation-class>
+    </service>
+    <service name="ServiceCanal">
+      <implementation-class>WebService.ServiceCanal</implementation-class>
+    </service>
+    <service name="ServiceCategoriaProducto">
+      <implementation-class>WebService.ServiceCategoriaProducto</implementation-class>
+    </service>
+    <service name="ServiceCliente">
+      <implementation-class>WebService.ServiceCliente</implementation-class>
+    </service>
+    <service name="ServiceComuna">
+      <implementation-class>WebService.ServiceComuna</implementation-class>
+    </service>
+    <service name="ServiceEstablecimiento">
+      <implementation-class>WebService.ServiceEstablecimiento</implementation-class>
+    </service>
+    <service name="ServiceOferta">
+      <implementation-class>WebService.ServiceOferta</implementation-class>
+    </service>
+    <service name="ServiceOfertaProducto">
+      <implementation-class>WebService.ServiceOfertaProducto</implementation-class>
+    </service>
+    <service name="ServicePagina">
+      <implementation-class>WebService.ServicePagina</implementation-class>
+    </service>
+    <service name="ServicePedidoCabecera">
+      <implementation-class>WebService.ServicePedidoCabecera</implementation-class>
+    </service>
+    <service name="ServicePedidoDetalle">
+      <implementation-class>WebService.ServicePedidoDetalle</implementation-class>
+    </service>
+    <service name="ServicePerfil">
+      <implementation-class>WebService.ServicePerfil</implementation-class>
+    </service>
+    <service name="ServiceProvincia">
+      <implementation-class>WebService.ServiceProvincia</implementation-class>
+    </service>
+    <service name="ServiceRegion">
+      <implementation-class>WebService.ServiceRegion</implementation-class>
+    </service>
+    <service name="ServiceRegistroPago">
+      <implementation-class>WebService.ServiceRegistroPago</implementation-class>
+    </service>
+    <service name="ServiceSeguimiento">
+      <implementation-class>WebService.ServiceSeguimiento</implementation-class>
+    </service>
+    <service name="ServiceTipoPago">
+      <implementation-class>WebService.ServiceTipoPago</implementation-class>
+    </service>
+    <service name="ServiceUsuario">
+      <implementation-class>WebService.ServiceUsuario</implementation-class>
+    </service>
   </services>
   <clients/>
   <jsr109>false</jsr109>

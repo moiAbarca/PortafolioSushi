@@ -7,11 +7,17 @@ package CapaDTO;
 
 import java.sql.Date;
 import java.sql.Time;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  *
  * @author moi
  */
+@XmlRootElement(name = "PedidoDetalle")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class PedidoDetalle {
     private int pedidoDetalleId;
     private int pedidoCabeceraId;
@@ -79,6 +85,7 @@ public class PedidoDetalle {
     /**
      * @return the fechaPedidoDetalle
      */
+    @XmlJavaTypeAdapter(SqlDateAdapter.class)
     public Date getFechaPedidoDetalle() {
         return fechaPedidoDetalle;
     }
