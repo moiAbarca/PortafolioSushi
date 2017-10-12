@@ -3,42 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 package CapaNegocio;
 
 import CapaConexion.Conecta;
+import CapaDTO.ResgistroPago;
+import Clasesinterface.RegistroPagoDao;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import CapaDTO.Acceso;
-import Clasesinterface.AccesoDao;
 import oracle.jdbc.OracleTypes;
+
 /**
  *
  * @author moi
  */
-//implementa la interfaz y los métodos creados en ella
-public class OracleAcceso implements AccesoDao {
-    //llama a la clase conecta...para conectarse a la BD
+public class OracleRegistroPago implements RegistroPagoDao{
     public Conecta db;    
-    public OracleAcceso()
+    public OracleRegistroPago()
     {
         //constructor 
         db = new Conecta();
     }
-    
-    //Inicio de implementación de métodos de la Interface
-    
+
     @Override
-    public List<Acceso> obtenerAcceso() throws SQLException {
-        //Crea una lista de tipo Acceso
-        List<Acceso> cAccesos = new ArrayList<Acceso>();  
+    public List<ResgistroPago> obtenerResgistroPago() throws SQLException {
+        List<ResgistroPago> cResgistroPago = new ArrayList<ResgistroPago>();  
         //instancia la clase acceso
-        Acceso bAcceso = new Acceso();
+        ResgistroPago bResgistroPago = new ResgistroPago();
         String sql = null;
         Connection con = null;  
         //CallableStatement = me permite ejecutar sentencias SQL
@@ -51,7 +45,7 @@ public class OracleAcceso implements AccesoDao {
             con = db.getConnection();
             //el SP tiene solo un parámetro de salida
             //por eso solo tiene un ?
-            sql = "{call FUKUSUKESUSHI.LISTAR_ACCESO(?)}";
+            sql = "{call FUKUSUKESUSHI.LISTAR_REGISTRO_PAGO(?)}";
             //le paso al CallableStatement la sentencia SQL
             cs = con.prepareCall(sql);
             cs.registerOutParameter(1, OracleTypes.CURSOR);
@@ -64,11 +58,15 @@ public class OracleAcceso implements AccesoDao {
             //cuando se que va a devolver uno, ocupo un IF
             while(rs.next())
             {
-                bAcceso = new Acceso();
-                bAcceso.setAccesoId(rs.getInt(1));
-                bAcceso.setPaginaId(rs.getInt(2));
-                bAcceso.setPerfilId(rs.getInt(3));
-                cAccesos.add(bAcceso);
+                bResgistroPago = new ResgistroPago();
+                bResgistroPago.setRegistroPagoId(rs.getInt(1));
+                bResgistroPago.setTipoPagoId(rs.getInt(2));
+                bResgistroPago.setPedidoCabeceraId(rs.getInt(3));
+                bResgistroPago.setEstadoPago(rs.getString(4));
+                bResgistroPago.setCodigoAutorizacion(rs.getInt(5));
+                bResgistroPago.setNumeroCuotas(rs.getInt(6));
+                bResgistroPago.setMontoTotal(rs.getInt(7));                
+                cResgistroPago.add(bResgistroPago);
             }
             rs.close();
             cs.close();
@@ -77,12 +75,12 @@ public class OracleAcceso implements AccesoDao {
         {
             e.printStackTrace();
         }
-        return cAccesos;
+        return cResgistroPago;
     }
 
     @Override
-    public void agregarAcceso(Acceso acceso) throws SQLException {      
-        Acceso bAcceso = new Acceso();
+    public void agregarResgistroPago(ResgistroPago resgistroPago) throws SQLException {
+        ResgistroPago bResgistroPago = new ResgistroPago();
         String sql = null;
         Connection con = null;
         CallableStatement cs = null;         
@@ -90,12 +88,16 @@ public class OracleAcceso implements AccesoDao {
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.ACCESO_tapi.ins(?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.REGISTRO_PAGO_tapi.ins(?, ?, ?, ?, ?, ?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
-            cs.setInt(1, acceso.getPerfilId());
-            cs.setInt(2, acceso.getPaginaId());
-            cs.setInt(3, acceso.getAccesoId());
+            cs.setInt(1, resgistroPago.getNumeroCuotas());
+            cs.setInt(2, resgistroPago.getMontoTotal());
+            cs.setInt(3, resgistroPago.getPedidoCabeceraId());
+            cs.setInt(4, resgistroPago.getCodigoAutorizacion());
+            cs.setString(5, resgistroPago.getEstadoPago());
+            cs.setInt(6, resgistroPago.getRegistroPagoId());
+            cs.setInt(7, resgistroPago.getTipoPagoId());           
             cs.execute();          
             cs.close();
         }
@@ -104,12 +106,11 @@ public class OracleAcceso implements AccesoDao {
             e.printStackTrace();
             System.out.println("No se pudo agregar: " + e);
         }
-        
     }
 
     @Override
-    public void modificarAcceso(Acceso acceso) throws SQLException {
-        Acceso bAcceso = new Acceso();
+    public void modificarResgistroPago(ResgistroPago resgistroPago) throws SQLException {
+        ResgistroPago bResgistroPago = new ResgistroPago();
         String sql = null;
         Connection con = null;
         CallableStatement cs = null;         
@@ -117,11 +118,15 @@ public class OracleAcceso implements AccesoDao {
         {            
             con = db.getConnection();
             //llama al update de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.ACCESO_tapi.upd(?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.REGISTRO_PAGO_tapi.upd(?, ?, ?, ?, ?, ?, ?)}";
             cs = con.prepareCall(sql);
-            cs.setInt(1, acceso.getPerfilId());
-            cs.setInt(2, acceso.getPaginaId());
-            cs.setInt(3, acceso.getAccesoId());
+            cs.setInt(1, resgistroPago.getNumeroCuotas());
+            cs.setInt(2, resgistroPago.getMontoTotal());
+            cs.setInt(3, resgistroPago.getPedidoCabeceraId());
+            cs.setInt(4, resgistroPago.getCodigoAutorizacion());
+            cs.setString(5, resgistroPago.getEstadoPago());
+            cs.setInt(6, resgistroPago.getRegistroPagoId());
+            cs.setInt(7, resgistroPago.getTipoPagoId());      
             cs.execute();          
             cs.close();
         }
@@ -133,7 +138,7 @@ public class OracleAcceso implements AccesoDao {
     }
 
     @Override
-    public void eliminarAcceso(Integer id) throws SQLException {
+    public void eliminarResgistroPago(Integer id) throws SQLException {
         String sql = null;
         Connection con = null;
         CallableStatement cs = null;         
@@ -141,7 +146,7 @@ public class OracleAcceso implements AccesoDao {
         {            
             con = db.getConnection();
             //llama al eliminar que recibe 1 parámetro
-            sql = "{call FUKUSUKESUSHI.ACCESO_tapi.del(?)}";
+            sql = "{call FUKUSUKESUSHI.REGISTRO_PAGO_tapi.del(?)}";
             cs = con.prepareCall(sql);
             //entrego el parámetro de entrada de la función 
             //y si existe en la BD lo borro
@@ -156,9 +161,9 @@ public class OracleAcceso implements AccesoDao {
     }
 
     @Override
-    public List<Acceso> buscarAcceso(Integer id) throws SQLException {
-        List<Acceso> cAccesos = new ArrayList<Acceso>();        
-        Acceso bAcceso = new Acceso();
+    public List<ResgistroPago> buscarResgistroPago(Integer id) throws SQLException {
+        List<ResgistroPago> cResgistroPago = new ArrayList<ResgistroPago>();        
+        ResgistroPago bResgistroPago = new ResgistroPago();
         String sql = null;
         Connection con = null;        
         CallableStatement cs = null;
@@ -169,7 +174,7 @@ public class OracleAcceso implements AccesoDao {
             //llama a la función de tiene dos parámetros
             //el primero de entrada
             //y el segundo de salida
-            sql = ("{call FUKUSUKESUSHI.BUSCAR_ACCESO(?,?)}");            
+            sql = ("{call FUKUSUKESUSHI.BUSCAR_REGISTRO_PAGO(?,?)}");            
             cs = con.prepareCall(sql);
             //seteo el primer parámetro
             cs.setInt(1, id); 
@@ -182,11 +187,15 @@ public class OracleAcceso implements AccesoDao {
             rs = (ResultSet)cs.getObject(2);
             if(rs.next())
             {
-                bAcceso = new Acceso();
-                bAcceso.setAccesoId(rs.getInt(1));
-                bAcceso.setPaginaId(rs.getInt(2));
-                bAcceso.setPerfilId(rs.getInt(3));
-                cAccesos.add(bAcceso);
+                bResgistroPago = new ResgistroPago();
+                bResgistroPago.setRegistroPagoId(rs.getInt(1));
+                bResgistroPago.setTipoPagoId(rs.getInt(2));
+                bResgistroPago.setPedidoCabeceraId(rs.getInt(3));
+                bResgistroPago.setEstadoPago(rs.getString(4));
+                bResgistroPago.setCodigoAutorizacion(rs.getInt(5));
+                bResgistroPago.setNumeroCuotas(rs.getInt(6));
+                bResgistroPago.setMontoTotal(rs.getInt(7));                
+                cResgistroPago.add(bResgistroPago);
             }
             rs.close();
             
@@ -196,6 +205,6 @@ public class OracleAcceso implements AccesoDao {
         {
             e.printStackTrace();
         }
-        return cAccesos;
+        return cResgistroPago;
     }
 }

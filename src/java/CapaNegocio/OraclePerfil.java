@@ -3,42 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 package CapaNegocio;
 
 import CapaConexion.Conecta;
+import CapaDTO.Perfil;
+import Clasesinterface.PerfilDao;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import CapaDTO.Acceso;
-import Clasesinterface.AccesoDao;
 import oracle.jdbc.OracleTypes;
+
 /**
  *
  * @author moi
  */
-//implementa la interfaz y los métodos creados en ella
-public class OracleAcceso implements AccesoDao {
-    //llama a la clase conecta...para conectarse a la BD
-    public Conecta db;    
-    public OracleAcceso()
+public class OraclePerfil implements PerfilDao{
+     public Conecta db;    
+    public OraclePerfil()
     {
         //constructor 
         db = new Conecta();
     }
-    
-    //Inicio de implementación de métodos de la Interface
-    
+
     @Override
-    public List<Acceso> obtenerAcceso() throws SQLException {
-        //Crea una lista de tipo Acceso
-        List<Acceso> cAccesos = new ArrayList<Acceso>();  
+    public List<Perfil> obtenerPerfil() throws SQLException {
+        List<Perfil> cPerfil = new ArrayList<Perfil>();  
         //instancia la clase acceso
-        Acceso bAcceso = new Acceso();
+        Perfil bPerfil = new Perfil();
         String sql = null;
         Connection con = null;  
         //CallableStatement = me permite ejecutar sentencias SQL
@@ -51,7 +45,7 @@ public class OracleAcceso implements AccesoDao {
             con = db.getConnection();
             //el SP tiene solo un parámetro de salida
             //por eso solo tiene un ?
-            sql = "{call FUKUSUKESUSHI.LISTAR_ACCESO(?)}";
+            sql = "{call FUKUSUKESUSHI.LISTAR_PERFIL(?)}";
             //le paso al CallableStatement la sentencia SQL
             cs = con.prepareCall(sql);
             cs.registerOutParameter(1, OracleTypes.CURSOR);
@@ -64,11 +58,11 @@ public class OracleAcceso implements AccesoDao {
             //cuando se que va a devolver uno, ocupo un IF
             while(rs.next())
             {
-                bAcceso = new Acceso();
-                bAcceso.setAccesoId(rs.getInt(1));
-                bAcceso.setPaginaId(rs.getInt(2));
-                bAcceso.setPerfilId(rs.getInt(3));
-                cAccesos.add(bAcceso);
+                bPerfil = new Perfil();
+                bPerfil.setPerfilId(rs.getInt(1));
+                bPerfil.setNombrePerfil(rs.getString(2));
+                bPerfil.setAccesoId(rs.getInt(3));
+                cPerfil.add(bPerfil);
             }
             rs.close();
             cs.close();
@@ -77,12 +71,12 @@ public class OracleAcceso implements AccesoDao {
         {
             e.printStackTrace();
         }
-        return cAccesos;
+        return cPerfil;
     }
 
     @Override
-    public void agregarAcceso(Acceso acceso) throws SQLException {      
-        Acceso bAcceso = new Acceso();
+    public void agregarPerfil(Perfil perfil) throws SQLException {
+        Perfil bPerfil = new Perfil();
         String sql = null;
         Connection con = null;
         CallableStatement cs = null;         
@@ -90,12 +84,12 @@ public class OracleAcceso implements AccesoDao {
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.ACCESO_tapi.ins(?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.PERFIL_tapi.ins(?, ?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
-            cs.setInt(1, acceso.getPerfilId());
-            cs.setInt(2, acceso.getPaginaId());
-            cs.setInt(3, acceso.getAccesoId());
+            cs.setInt(1, perfil.getPerfilId());
+            cs.setString(2, perfil.getNombrePerfil());
+            cs.setInt(3, perfil.getAccesoId());
             cs.execute();          
             cs.close();
         }
@@ -104,12 +98,11 @@ public class OracleAcceso implements AccesoDao {
             e.printStackTrace();
             System.out.println("No se pudo agregar: " + e);
         }
-        
     }
 
     @Override
-    public void modificarAcceso(Acceso acceso) throws SQLException {
-        Acceso bAcceso = new Acceso();
+    public void modificarPerfil(Perfil perfil) throws SQLException {
+        Perfil bPerfil = new Perfil();
         String sql = null;
         Connection con = null;
         CallableStatement cs = null;         
@@ -117,11 +110,11 @@ public class OracleAcceso implements AccesoDao {
         {            
             con = db.getConnection();
             //llama al update de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.ACCESO_tapi.upd(?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.PERFIL_tapi.upd(?, ?, ?)}";
             cs = con.prepareCall(sql);
-            cs.setInt(1, acceso.getPerfilId());
-            cs.setInt(2, acceso.getPaginaId());
-            cs.setInt(3, acceso.getAccesoId());
+            cs.setInt(1, perfil.getPerfilId());
+            cs.setString(2, perfil.getNombrePerfil());
+            cs.setInt(3, perfil.getAccesoId());
             cs.execute();          
             cs.close();
         }
@@ -133,7 +126,7 @@ public class OracleAcceso implements AccesoDao {
     }
 
     @Override
-    public void eliminarAcceso(Integer id) throws SQLException {
+    public void eliminarPerfil(Integer id) throws SQLException {
         String sql = null;
         Connection con = null;
         CallableStatement cs = null;         
@@ -141,7 +134,7 @@ public class OracleAcceso implements AccesoDao {
         {            
             con = db.getConnection();
             //llama al eliminar que recibe 1 parámetro
-            sql = "{call FUKUSUKESUSHI.ACCESO_tapi.del(?)}";
+            sql = "{call FUKUSUKESUSHI.PERFIL_tapi.del(?)}";
             cs = con.prepareCall(sql);
             //entrego el parámetro de entrada de la función 
             //y si existe en la BD lo borro
@@ -156,9 +149,9 @@ public class OracleAcceso implements AccesoDao {
     }
 
     @Override
-    public List<Acceso> buscarAcceso(Integer id) throws SQLException {
-        List<Acceso> cAccesos = new ArrayList<Acceso>();        
-        Acceso bAcceso = new Acceso();
+    public List<Perfil> buscarPerfil(Integer id) throws SQLException {
+        List<Perfil> cPerfil = new ArrayList<Perfil>();        
+        Perfil bPerfil = new Perfil();
         String sql = null;
         Connection con = null;        
         CallableStatement cs = null;
@@ -169,7 +162,7 @@ public class OracleAcceso implements AccesoDao {
             //llama a la función de tiene dos parámetros
             //el primero de entrada
             //y el segundo de salida
-            sql = ("{call FUKUSUKESUSHI.BUSCAR_ACCESO(?,?)}");            
+            sql = ("{call FUKUSUKESUSHI.BUSCAR_PERFIL(?,?)}");            
             cs = con.prepareCall(sql);
             //seteo el primer parámetro
             cs.setInt(1, id); 
@@ -182,11 +175,11 @@ public class OracleAcceso implements AccesoDao {
             rs = (ResultSet)cs.getObject(2);
             if(rs.next())
             {
-                bAcceso = new Acceso();
-                bAcceso.setAccesoId(rs.getInt(1));
-                bAcceso.setPaginaId(rs.getInt(2));
-                bAcceso.setPerfilId(rs.getInt(3));
-                cAccesos.add(bAcceso);
+                bPerfil = new Perfil();
+                bPerfil.setPerfilId(rs.getInt(1));
+                bPerfil.setNombrePerfil(rs.getString(2));
+                bPerfil.setAccesoId(rs.getInt(3));
+                cPerfil.add(bPerfil);
             }
             rs.close();
             
@@ -196,6 +189,6 @@ public class OracleAcceso implements AccesoDao {
         {
             e.printStackTrace();
         }
-        return cAccesos;
+        return cPerfil;
     }
 }
