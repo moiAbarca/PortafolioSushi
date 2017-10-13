@@ -23,8 +23,8 @@ public class PedidoDetalle {
     private int pedidoCabeceraId;
     private int productoId;
     private int cantidad;
-    private Date fechaPedidoDetalle;
-    private Time horaPedidoDetalle;
+    private String fechaPedidoDetalle;
+    private String horaPedidoDetalle;
 
     /**
      * @return the pedidoDetalleId
@@ -85,29 +85,29 @@ public class PedidoDetalle {
     /**
      * @return the fechaPedidoDetalle
      */
-    @XmlJavaTypeAdapter(SqlDateAdapter.class)
-    public Date getFechaPedidoDetalle() {
+    
+    public String getFechaPedidoDetalle() {
         return fechaPedidoDetalle;
     }
 
     /**
      * @param fechaPedidoDetalle the fechaPedidoDetalle to set
      */
-    public void setFechaPedidoDetalle(Date fechaPedidoDetalle) {
+    public void setFechaPedidoDetalle(String fechaPedidoDetalle) {
         this.fechaPedidoDetalle = fechaPedidoDetalle;
     }
 
     /**
      * @return the horaPedidoDetalle
      */
-    public Time getHoraPedidoDetalle() {
+    public String getHoraPedidoDetalle() {
         return horaPedidoDetalle;
     }
 
     /**
      * @param horaPedidoDetalle the horaPedidoDetalle to set
      */
-    public void setHoraPedidoDetalle(Time horaPedidoDetalle) {
+    public void setHoraPedidoDetalle(String horaPedidoDetalle) {
         this.horaPedidoDetalle = horaPedidoDetalle;
     }
 }

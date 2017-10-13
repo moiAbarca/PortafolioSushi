@@ -20,7 +20,7 @@ public class Cliente {
     private String nombre;
     private String apellido;
     private String direccion;
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
     private String sexo;
     private String email;
     private int telefono;
@@ -126,15 +126,15 @@ public class Cliente {
     /**
      * @return the fechaNacimiento
      */
-    @XmlJavaTypeAdapter(SqlDateAdapter.class)
-    public Date getFechaNacimiento() {
+    
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
     /**
      * @param fechaNacimiento the fechaNacimiento to set
      */
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

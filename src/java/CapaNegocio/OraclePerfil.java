@@ -30,32 +30,20 @@ public class OraclePerfil implements PerfilDao{
 
     @Override
     public List<Perfil> obtenerPerfil() throws SQLException {
-        List<Perfil> cPerfil = new ArrayList<Perfil>();  
-        //instancia la clase acceso
+        List<Perfil> cPerfil = new ArrayList<Perfil>();         
         Perfil bPerfil = new Perfil();
         String sql = null;
-        Connection con = null;  
-        //CallableStatement = me permite ejecutar sentencias SQL
-        CallableStatement cs = null;
-        //ResultSet = proporciona varios métodos para obtener los datos de columna correspondientes a un fila
+        Connection con = null;          
+        CallableStatement cs = null;        
         ResultSet rs;
         try
-        {
-            //se conecta a la BD
-            con = db.getConnection();
-            //el SP tiene solo un parámetro de salida
-            //por eso solo tiene un ?
-            sql = "{call FUKUSUKESUSHI.LISTAR_PERFIL(?)}";
-            //le paso al CallableStatement la sentencia SQL
+        {            
+            con = db.getConnection();         
+            sql = "{call FUKUSUKESUSHI.LISTAR_PERFIL(?)}";            
             cs = con.prepareCall(sql);
             cs.registerOutParameter(1, OracleTypes.CURSOR);
-            cs.execute();
-            //creo un resultset con todos los datos de la tabla Acceso
-            rs = (ResultSet)cs.getObject(1);
-            //el resulset por defecto comienza en un índice antes que mi resultado
-            //por lo que debo ponerlo en NEXT para que me devuelva desde el primer valor en adelante
-            //cuando se que v aa devolver varios valores ocupo while
-            //cuando se que va a devolver uno, ocupo un IF
+            cs.execute();            
+            rs = (ResultSet)cs.getObject(1);            
             while(rs.next())
             {
                 bPerfil = new Perfil();

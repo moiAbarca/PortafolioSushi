@@ -18,8 +18,8 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class Oferta {
     private int ofertaId;
     private double porcentajeOferta;
-    private Date fechaInicio;
-    private Date fechaTermino;
+    private String fechaInicio;
+    private String fechaTermino;
 
     /**
      * @return the ofertaId
@@ -52,30 +52,30 @@ public class Oferta {
     /**
      * @return the fechaInicio
      */
-    @XmlJavaTypeAdapter(SqlDateAdapter.class)
-    public Date getFechaInicio() {
+    
+    public String getFechaInicio() {
         return fechaInicio;
     }
 
     /**
      * @param fechaInicio the fechaInicio to set
      */
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(String fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
     /**
      * @return the fechaTermino
      */
-    @XmlJavaTypeAdapter(SqlDateAdapter.class)
-    public Date getFechaTermino() {
+    
+    public String getFechaTermino() {
         return fechaTermino;
     }
 
     /**
      * @param fechaTermino the fechaTermino to set
      */
-    public void setFechaTermino(Date fechaTermino) {
+    public void setFechaTermino(String fechaTermino) {
         this.fechaTermino = fechaTermino;
     }
 }

@@ -64,8 +64,8 @@ public class OraclePedidoCabecera implements PedidoCabeceraDao{
                 bPedidoCabecera.setEstablecimientoId(rs.getInt(2));
                 bPedidoCabecera.setCanalId(rs.getInt(3));
                 bPedidoCabecera.setClienteId(rs.getInt(4));
-                bPedidoCabecera.setFechaPedido(rs.getDate(5));
-                bPedidoCabecera.setHoraPedido(rs.getTime(6));
+                bPedidoCabecera.setFechaPedido(rs.getString(5));
+                bPedidoCabecera.setHoraPedido(rs.getString(6));
                 bPedidoCabecera.setEstadoPedido(rs.getString(7));                
                 cPedidoCabecera.add(bPedidoCabecera);
             }
@@ -96,9 +96,9 @@ public class OraclePedidoCabecera implements PedidoCabeceraDao{
             cs.setInt(2, pedidoCabecera.getEstablecimientoId());
             cs.setInt(3, pedidoCabecera.getClienteId());
             cs.setInt(4, pedidoCabecera.getCanalId());
-            cs.setTime(5, pedidoCabecera.getHoraPedido());
+            cs.setString(5, pedidoCabecera.getHoraPedido());
             cs.setString(6, pedidoCabecera.getEstadoPedido());
-            cs.setDate(7, pedidoCabecera.getFechaPedido());            
+            cs.setString(7, pedidoCabecera.getFechaPedido());            
             cs.execute();          
             cs.close();
         }
@@ -125,9 +125,9 @@ public class OraclePedidoCabecera implements PedidoCabeceraDao{
             cs.setInt(2, pedidoCabecera.getEstablecimientoId());
             cs.setInt(3, pedidoCabecera.getClienteId());
             cs.setInt(4, pedidoCabecera.getCanalId());
-            cs.setTime(5, pedidoCabecera.getHoraPedido());
+            cs.setString(5, pedidoCabecera.getHoraPedido());
             cs.setString(6, pedidoCabecera.getEstadoPedido());
-            cs.setDate(7, pedidoCabecera.getFechaPedido());    
+            cs.setString(7, pedidoCabecera.getFechaPedido());    
             cs.execute();          
             cs.close();
         }
@@ -193,8 +193,8 @@ public class OraclePedidoCabecera implements PedidoCabeceraDao{
                 bPedidoCabecera.setEstablecimientoId(rs.getInt(2));
                 bPedidoCabecera.setCanalId(rs.getInt(3));
                 bPedidoCabecera.setClienteId(rs.getInt(4));
-                bPedidoCabecera.setFechaPedido(rs.getDate(5));
-                bPedidoCabecera.setHoraPedido(rs.getTime(6));
+                bPedidoCabecera.setFechaPedido(rs.getString(5));
+                bPedidoCabecera.setHoraPedido(rs.getString(6));
                 bPedidoCabecera.setEstadoPedido(rs.getString(7));                
                 cPedidoCabecera.add(bPedidoCabecera);
             }

@@ -9,6 +9,9 @@ import Clasesinterface.AccesoDao;
 import CapaDTO.Acceso;
 import CapaNegocio.OracleAcceso;
 import CapaConexion.Conecta;
+import CapaDTO.Cliente;
+import CapaNegocio.OracleCliente;
+import Clasesinterface.ClienteDao;
 import java.sql.SQLException;
 import java.util.List;
 /**
@@ -26,21 +29,28 @@ public class Pruebas {
         //CLASE PARA HACER PRUEBAS
         
         //listar
-     /*
-        List<Acceso> acceso;
-        AccesoDao dao = new OracleAcceso();      
-        acceso = dao.obtenerAcceso();        
+     
+        List<Cliente> acceso;
+        ClienteDao dao = new OracleCliente();      
+        acceso = dao.obtenerCliente();        
         
         System.out.println("El total del registro es: " + acceso.size());
         
         for(int i = 0; i< acceso.size(); i++)
         {
-            System.out.println("Id Acceso : " + acceso.get(i).getAccesoId());
-            System.out.println("Id Página : " + acceso.get(i).getPaginaId());
-            System.out.println("Id Perfil : " + acceso.get(i).getPerfilId());
+            System.out.println("USUARIO_ID : " + acceso.get(i).getUsuarioId());
+            System.out.println("COMUNA_ID : " + acceso.get(i).getComunaId());
+            System.out.println("RUT : " + acceso.get(i).getRut());
+            System.out.println("NOMBRE : " + acceso.get(i).getNombre());
+            System.out.println("APELLIDO : " + acceso.get(i).getApellido());
+            System.out.println("DIRECCION : " + acceso.get(i).getDireccion());
+            System.out.println("FECHA_NACIMIENTO : " + acceso.get(i).getFechaNacimiento());
+            System.out.println("SEXO : " + acceso.get(i).getSexo());
+            System.out.println("EMAIL : " + acceso.get(i).getEmail());
+            System.out.println("TELEFONO : " + acceso.get(i).getTelefono());            
             System.out.println("-------------------");
         }
-*/
+
         //temrino listar
         
         //insertar
@@ -72,20 +82,40 @@ public class Pruebas {
         //Buscar por Id
         /*
         Integer Id = 1;
-        List<Acceso> acceso;
-        AccesoDao dao = new OracleAcceso();
+        List<Cliente> acceso;
+        ClienteDao dao = new OracleCliente();
         
-        acceso = dao.buscarAcceso(2);        
+        acceso = dao.buscarCliente(2);        
         
         System.out.println("El total del registro es: " + acceso.size());
         
         for(int i = 0; i< acceso.size(); i++)
         {
-            System.out.println("Id Acceso : " + acceso.get(i).getAccesoId());
-            System.out.println("Id Página : " + acceso.get(i).getPaginaId());
-            System.out.println("Id Perfil : " + acceso.get(i).getPerfilId());
+            System.out.println("USUARIO_ID : " + acceso.get(i).getUsuarioId());
+            System.out.println("COMUNA_ID : " + acceso.get(i).getComunaId());
+            System.out.println("RUT : " + acceso.get(i).getRut());
+            System.out.println("NOMBRE : " + acceso.get(i).getNombre());
+            System.out.println("APELLIDO : " + acceso.get(i).getApellido());
+            System.out.println("DIRECCION : " + acceso.get(i).getDireccion());
+            System.out.println("FECHA_NACIMIENTO : " + acceso.get(i).getFechaNacimiento());
+            System.out.println("SEXO : " + acceso.get(i).getSexo());
+            System.out.println("EMAIL : " + acceso.get(i).getEmail());
+            System.out.println("TELEFONO : " + acceso.get(i).getTelefono());            
             System.out.println("-------------------");
-        }//fin buscar por Id
+        }//fin buscar por Id/*
+        
+        /*
+        CLIENTE_ID ,
+            USUARIO_ID ,
+            COMUNA_ID ,
+            RUT ,
+            NOMBRE ,
+            APELLIDO ,
+            DIRECCION ,
+            FECHA_NACIMIENTO ,
+            SEXO ,
+            EMAIL ,
+            TELEFONO 
         */
 
     }

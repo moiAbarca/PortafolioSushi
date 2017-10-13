@@ -5,6 +5,7 @@
  */
 package CapaDTO;
 
+import java.sql.Timestamp;
 import java.sql.Date;
 import java.sql.Time;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -23,8 +24,8 @@ public class PedidoCabecera {
     private int establecimientoId;
     private int canalId;
     private int clienteId;
-    private Date fechaPedido;
-    private Time horaPedido;
+    private String fechaPedido;
+    private String horaPedido;
     private String estadoPedido;
 
     /**
@@ -86,29 +87,30 @@ public class PedidoCabecera {
     /**
      * @return the fechaPedido
      */
-    @XmlJavaTypeAdapter(SqlDateAdapter.class)
-    public Date getFechaPedido() {
+    
+    public String getFechaPedido() {
         return fechaPedido;
     }
 
     /**
      * @param fechaPedido the fechaPedido to set
      */
-    public void setFechaPedido(Date fechaPedido) {
+    public void setFechaPedido(String fechaPedido) {
         this.fechaPedido = fechaPedido;
     }
 
     /**
      * @return the horaPedido
      */
-    public Time getHoraPedido() {
+    
+    public String getHoraPedido() {
         return horaPedido;
     }
 
     /**
      * @param horaPedido the horaPedido to set
      */
-    public void setHoraPedido(Time horaPedido) {
+    public void setHoraPedido(String horaPedido) {
         this.horaPedido = horaPedido;
     }
 

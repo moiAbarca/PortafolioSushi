@@ -64,8 +64,8 @@ public class OraclePedidoDetalle implements PedidoDetalleDao{
                 bPedidoDetalle.setPedidoCabeceraId(rs.getInt(2));
                 bPedidoDetalle.setProductoId(rs.getInt(3));
                 bPedidoDetalle.setCantidad(rs.getInt(4));
-                bPedidoDetalle.setFechaPedidoDetalle(rs.getDate(5));
-                bPedidoDetalle.setHoraPedidoDetalle(rs.getTime(6));
+                bPedidoDetalle.setFechaPedidoDetalle(rs.getString(5));
+                bPedidoDetalle.setHoraPedidoDetalle(rs.getString(6));
                 cPedidoDetalle.add(bPedidoDetalle);
             }
             rs.close();
@@ -93,10 +93,10 @@ public class OraclePedidoDetalle implements PedidoDetalleDao{
             //le seteo los 3 parámetros de entrada
             cs.setInt(1, pedidoDetalle.getPedidoCabeceraId());
             cs.setInt(2, pedidoDetalle.getPedidoDetalleId());
-            cs.setTime(3, pedidoDetalle.getHoraPedidoDetalle());
+            cs.setString(3, pedidoDetalle.getHoraPedidoDetalle());
             cs.setInt(4, pedidoDetalle.getProductoId());
             cs.setInt(5, pedidoDetalle.getCantidad());
-            cs.setDate(6, pedidoDetalle.getFechaPedidoDetalle());
+            cs.setString(6, pedidoDetalle.getFechaPedidoDetalle());
             cs.execute();          
             cs.close();
         }
@@ -121,10 +121,10 @@ public class OraclePedidoDetalle implements PedidoDetalleDao{
             cs = con.prepareCall(sql);
             cs.setInt(1, pedidoDetalle.getPedidoCabeceraId());
             cs.setInt(2, pedidoDetalle.getPedidoDetalleId());
-            cs.setTime(3, pedidoDetalle.getHoraPedidoDetalle());
+            cs.setString(3, pedidoDetalle.getHoraPedidoDetalle());
             cs.setInt(4, pedidoDetalle.getProductoId());
             cs.setInt(5, pedidoDetalle.getCantidad());
-            cs.setDate(6, pedidoDetalle.getFechaPedidoDetalle());
+            cs.setString(6, pedidoDetalle.getFechaPedidoDetalle());
             cs.execute();          
             cs.close();
         }
@@ -190,8 +190,8 @@ public class OraclePedidoDetalle implements PedidoDetalleDao{
                 bPedidoDetalle.setPedidoCabeceraId(rs.getInt(2));
                 bPedidoDetalle.setProductoId(rs.getInt(3));
                 bPedidoDetalle.setCantidad(rs.getInt(4));
-                bPedidoDetalle.setFechaPedidoDetalle(rs.getDate(5));
-                bPedidoDetalle.setHoraPedidoDetalle(rs.getTime(6));
+                bPedidoDetalle.setFechaPedidoDetalle(rs.getString(5));
+                bPedidoDetalle.setHoraPedidoDetalle(rs.getString(6));
                 cPedidoDetalle.add(bPedidoDetalle);
             }
             rs.close();
