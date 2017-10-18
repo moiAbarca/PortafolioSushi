@@ -18,5 +18,5 @@ public interface AdministradorDao {
     public void agregarAdministrador(Administrador administrador) throws SQLException;
     public void modificarAdministrador(Administrador administrador) throws SQLException;
     public void eliminarAdministrador(Integer id) throws SQLException;
-    public List<Administrador> buscarAdministrador(Integer id) throws SQLException;
+    public Administrador buscarAdministrador(Integer id) throws SQLException;
 }

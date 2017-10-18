@@ -18,5 +18,5 @@ public interface PerfilDao {
     public void agregarPerfil(Perfil perfil) throws SQLException;
     public void modificarPerfil(Perfil perfil) throws SQLException;
     public void eliminarPerfil(Integer id) throws SQLException;
-    public List<Perfil> buscarPerfil(Integer id) throws SQLException;
+    public Perfil buscarPerfil(Integer id) throws SQLException;
 }

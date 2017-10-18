@@ -18,5 +18,5 @@ public interface PedidoCabeceraDao {
     public void agregarPedidoCabecera(PedidoCabecera pedidoCabecera) throws SQLException;
     public void modificarPedidoCabecera(PedidoCabecera pedidoCabecera) throws SQLException;
     public void eliminarPedidoCabecera(Integer id) throws SQLException;
-    public List<PedidoCabecera> buscarPedidoCabecera(Integer id) throws SQLException;
+    public PedidoCabecera buscarPedidoCabecera(Integer id) throws SQLException;
 }

@@ -18,5 +18,5 @@ public interface ProductoDao {
     public void agregarProducto(Producto producto) throws SQLException;
     public void modificarProducto(Producto producto) throws SQLException;
     public void eliminarProducto(Integer id) throws SQLException;
-    public List<Producto> buscarProducto(Integer id) throws SQLException;
+    public Producto buscarProducto(Integer id) throws SQLException;
 }

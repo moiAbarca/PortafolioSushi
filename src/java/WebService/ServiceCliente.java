@@ -71,14 +71,15 @@ public class ServiceCliente {
     }
     
     @WebMethod(operationName = "buscarCliente")        
-    public List<Cliente> buscarCliente(@WebParam(name = "id") Integer id)  
+    public Cliente buscarCliente(@WebParam(name = "id") Integer id)  
     {
+        Cliente cl = new Cliente();
         try{
         ClienteDao dao = new OracleCliente();      
-        Cliente = dao.buscarCliente(id);
+        cl = dao.buscarCliente(id);
         }
         catch(Exception ex)
         {}
-        return Cliente;
+        return cl;
     }
 }

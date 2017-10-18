@@ -75,14 +75,15 @@ public class ServiceProducto {
     }
     
     @WebMethod(operationName = "buscarProducto")        
-    public List<Producto> buscarProducto(@WebParam(name = "id") Integer id)  
+    public Producto buscarProducto(@WebParam(name = "id") Integer id)  
     {
+        Producto pro = new Producto();
         try{
         ProductoDao dao = new OracleProducto();
-        Producto = dao.buscarProducto(id);
+        pro = dao.buscarProducto(id);
         }
         catch(Exception ex)
         {}
-        return Producto;
+        return pro;
     }
 }

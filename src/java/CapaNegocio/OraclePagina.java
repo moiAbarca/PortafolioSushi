@@ -150,8 +150,8 @@ public class OraclePagina implements PaginaDao{
     }
 
     @Override
-    public List<Pagina> buscarPagina(Integer id) throws SQLException {
-        List<Pagina> cPagina = new ArrayList<Pagina>();        
+    public Pagina buscarPagina(Integer id) throws SQLException {
+        
         Pagina bPagina = new Pagina();
         String sql = null;
         Connection con = null;        
@@ -180,7 +180,7 @@ public class OraclePagina implements PaginaDao{
                 bPagina.setPaginaId(rs.getInt(1));
                 bPagina.setPagina(rs.getString(2));
                 bPagina.setUrlPagina(rs.getString(3));
-                cPagina.add(bPagina);
+                
             }
             rs.close();
             
@@ -190,6 +190,6 @@ public class OraclePagina implements PaginaDao{
         {
             e.printStackTrace();
         }
-        return cPagina;
+        return bPagina;
     }
 }

@@ -146,8 +146,8 @@ public class OracleRegion implements RegionDao{
     }
 
     @Override
-    public List<Region> buscarRegion(Integer id) throws SQLException {
-        List<Region> cRegion = new ArrayList<Region>();        
+    public Region buscarRegion(Integer id) throws SQLException {
+        
         Region bRegion = new Region();
         String sql = null;
         Connection con = null;        
@@ -175,7 +175,7 @@ public class OracleRegion implements RegionDao{
                 bRegion = new Region();
                 bRegion.setRegionId(rs.getInt(1));
                 bRegion.setRegionNombre(rs.getString(2));                
-                cRegion.add(bRegion);
+                
             }
             rs.close();
             
@@ -185,6 +185,6 @@ public class OracleRegion implements RegionDao{
         {
             e.printStackTrace();
         }
-        return cRegion;
+        return bRegion;
     }
 }

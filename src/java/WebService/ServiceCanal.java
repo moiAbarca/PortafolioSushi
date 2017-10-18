@@ -71,14 +71,15 @@ public class ServiceCanal {
     }
     
     @WebMethod(operationName = "buscarCanal")        
-    public List<Canal> buscarCanal(@WebParam(name = "id") Integer id)  
+    public Canal buscarCanal(@WebParam(name = "id") Integer id)  
     {
+        Canal can = new Canal();
         try{
         CanalDao dao = new OracleCanal();      
-        canal = dao.buscarCanal(id);
+        can = dao.buscarCanal(id);
         }
         catch(Exception ex)
         {}
-        return canal;
+        return can;
     }
 }

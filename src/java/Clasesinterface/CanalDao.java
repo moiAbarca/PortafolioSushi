@@ -18,5 +18,5 @@ public interface CanalDao {
     public void agregarCanal(Canal canal) throws SQLException;
     public void modificarCanal(Canal canal) throws SQLException;
     public void eliminarCanal(Integer id) throws SQLException;
-    public List<Canal> buscarCanal(Integer id) throws SQLException;
+    public Canal buscarCanal(Integer id) throws SQLException;
 }

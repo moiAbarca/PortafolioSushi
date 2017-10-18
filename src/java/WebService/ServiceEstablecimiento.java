@@ -71,14 +71,15 @@ public class ServiceEstablecimiento {
     }
     
     @WebMethod(operationName = "buscarEstablecimiento")        
-    public List<Establecimiento> buscarEstablecimiento(@WebParam(name = "id") Integer id)  
+    public Establecimiento buscarEstablecimiento(@WebParam(name = "id") Integer id)  
     {
+        Establecimiento es = new Establecimiento();
         try{
         EstablecimientoDao dao = new OracleEstablecimiento();      
-        Establecimiento = dao.buscarEstablecimiento(id);
+        es = dao.buscarEstablecimiento(id);
         }
         catch(Exception ex)
         {}
-        return Establecimiento;
+        return es;
     }
 }

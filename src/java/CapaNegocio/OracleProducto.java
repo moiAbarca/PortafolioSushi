@@ -169,8 +169,8 @@ public class OracleProducto implements ProductoDao{
     }
 
     @Override
-    public List<Producto> buscarProducto(Integer id) throws SQLException {
-        List<Producto> cProducto = new ArrayList<Producto>();        
+    public Producto buscarProducto(Integer id) throws SQLException {
+        
         Producto bProducto = new Producto();
         String sql = null;
         Connection con = null;        
@@ -204,7 +204,7 @@ public class OracleProducto implements ProductoDao{
                 bProducto.setDescripcionProducto(rs.getString(6));
                 bProducto.setImagenProdcuto(rs.getString(7));
                 bProducto.setDisponibilidadProducto(rs.getBoolean(8));                
-                cProducto.add(bProducto);
+                
             }
             rs.close();
             
@@ -214,7 +214,7 @@ public class OracleProducto implements ProductoDao{
         {
             e.printStackTrace();
         }
-        return cProducto;
+        return bProducto;
     }
     
 }

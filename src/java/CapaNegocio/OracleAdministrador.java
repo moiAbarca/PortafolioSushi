@@ -161,8 +161,8 @@ public class OracleAdministrador implements AdministradorDao{
     }
 
     @Override
-    public List<Administrador> buscarAdministrador(Integer id) throws SQLException {
-        List<Administrador> cAdministrador = new ArrayList<Administrador>();        
+    public Administrador buscarAdministrador(Integer id) throws SQLException {
+        
         Administrador bAdministrador = new Administrador();
         String sql = null;
         Connection con = null;        
@@ -194,7 +194,7 @@ public class OracleAdministrador implements AdministradorDao{
                 bAdministrador.setCorrreoAdmin(rs.getString(4));
                 bAdministrador.setTelefonoAdmin(rs.getString(5));
                 bAdministrador.setUsuarioId(rs.getInt(6));
-                cAdministrador.add(bAdministrador);
+                
             }
             rs.close();
             
@@ -204,7 +204,7 @@ public class OracleAdministrador implements AdministradorDao{
         {
             e.printStackTrace();
         }
-        return cAdministrador;
+        return bAdministrador;
     
     }
     

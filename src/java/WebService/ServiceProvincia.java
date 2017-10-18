@@ -71,14 +71,15 @@ public class ServiceProvincia {
     }
     
     @WebMethod(operationName = "buscarProvincia")        
-    public List<Provincia> buscarProvincia(@WebParam(name = "id") Integer id)  
+    public Provincia buscarProvincia(@WebParam(name = "id") Integer id)  
     {
+        Provincia prov = new Provincia();
         try{
         ProvinciaDao dao = new OracleProvincia();
-        Provincia = dao.buscarProvincia(id);
+        prov = dao.buscarProvincia(id);
         }
         catch(Exception ex)
         {}
-        return Provincia;
+        return prov;
     }
 }

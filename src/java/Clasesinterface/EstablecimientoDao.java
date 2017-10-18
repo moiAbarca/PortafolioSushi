@@ -18,5 +18,5 @@ public interface EstablecimientoDao {
     public void agregarEstablecimiento(Establecimiento establecimiento) throws SQLException;
     public void modificarEstablecimiento(Establecimiento establecimiento) throws SQLException;
     public void eliminarEstablecimiento(Integer id) throws SQLException;
-    public List<Establecimiento> buscarEstablecimiento(Integer id) throws SQLException;
+    public Establecimiento buscarEstablecimiento(Integer id) throws SQLException;
 }

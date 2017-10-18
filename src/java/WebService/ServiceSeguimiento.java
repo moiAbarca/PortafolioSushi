@@ -71,14 +71,15 @@ public class ServiceSeguimiento {
     }
     
     @WebMethod(operationName = "buscarSeguimiento")        
-    public List<Seguimiento> buscarSeguimiento(@WebParam(name = "id") Integer id)  
+    public Seguimiento buscarSeguimiento(@WebParam(name = "id") Integer id)  
     {
+        Seguimiento seg = new Seguimiento();
         try{
         SeguimientoDao dao = new OracleSeguimiento();
-        Seguimiento = dao.buscarSeguimiento(id);
+        seg = dao.buscarSeguimiento(id);
         }
         catch(Exception ex)
         {}
-        return Seguimiento;
+        return seg;
     }
 }

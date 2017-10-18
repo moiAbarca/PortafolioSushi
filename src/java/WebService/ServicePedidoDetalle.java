@@ -71,14 +71,15 @@ public class ServicePedidoDetalle {
     }
     
     @WebMethod(operationName = "buscarPedidoDetalle")        
-    public List<PedidoDetalle> buscarPedidoDetalle(@WebParam(name = "id") Integer id)  
+    public PedidoDetalle buscarPedidoDetalle(@WebParam(name = "id") Integer id)  
     {
+        PedidoDetalle ped = new PedidoDetalle();
         try{
         PedidoDetalleDao dao = new OraclePedidoDetalle();
-        PedidoDetalle = dao.buscarPedidoDetalle(id);
+        ped = dao.buscarPedidoDetalle(id);
         }
         catch(Exception ex)
         {}
-        return PedidoDetalle;
+        return ped;
     }
 }

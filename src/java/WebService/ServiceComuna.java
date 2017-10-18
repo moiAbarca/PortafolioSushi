@@ -71,14 +71,15 @@ public class ServiceComuna {
     }
     
     @WebMethod(operationName = "buscarComuna")        
-    public List<Comuna> buscarComuna(@WebParam(name = "id") Integer id)  
+    public Comuna buscarComuna(@WebParam(name = "id") Integer id)  
     {
+        Comuna com = new Comuna();
         try{
         ComunaDao dao = new OracleComuna();      
-        Comuna = dao.buscarComuna(id);
+        com = dao.buscarComuna(id);
         }
         catch(Exception ex)
         {}
-        return Comuna;
+        return com;
     }
 }

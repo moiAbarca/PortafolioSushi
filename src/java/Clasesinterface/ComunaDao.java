@@ -18,5 +18,5 @@ public interface ComunaDao {
     public void agregarComuna(Comuna comuna) throws SQLException;
     public void modificarComuna(Comuna comuna) throws SQLException;
     public void eliminarComuna(Integer id) throws SQLException;
-    public List<Comuna> buscarComuna(Integer id) throws SQLException;
+    public Comuna buscarComuna(Integer id) throws SQLException;
 }

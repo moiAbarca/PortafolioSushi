@@ -71,14 +71,15 @@ public class ServiceRegion {
     }
     
     @WebMethod(operationName = "buscarRegion")        
-    public List<Region> buscarRegion(@WebParam(name = "id") Integer id)  
+    public Region buscarRegion(@WebParam(name = "id") Integer id)  
     {
+        Region reg = new Region();
         try{
         RegionDao dao = new OracleRegion();
-        Region = dao.buscarRegion(id);
+        reg = dao.buscarRegion(id);
         }
         catch(Exception ex)
         {}
-        return Region;
+        return reg;
     }
 }

@@ -71,14 +71,15 @@ public class ServicePagina {
     }
     
     @WebMethod(operationName = "buscarPagina")        
-    public List<Pagina> buscarPagina(@WebParam(name = "id") Integer id)  
+    public Pagina buscarPagina(@WebParam(name = "id") Integer id)  
     {
+        Pagina pa = new Pagina();
         try{
         PaginaDao dao = new OraclePagina();      
-        Pagina = dao.buscarPagina(id);
+        pa = dao.buscarPagina(id);
         }
         catch(Exception ex)
         {}
-        return Pagina;
+        return pa;
     }
 }

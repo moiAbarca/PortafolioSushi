@@ -147,8 +147,8 @@ public class OracleOfertaProducto implements OfertaProducDao{
     }
 
     @Override
-    public List<OfertaProducto> buscarOfertaProducto(Integer id) throws SQLException {
-        List<OfertaProducto> cOfertaProducto = new ArrayList<OfertaProducto>();        
+    public OfertaProducto buscarOfertaProducto(Integer id) throws SQLException {
+        
         OfertaProducto bOfertaProducto = new OfertaProducto();
         String sql = null;
         Connection con = null;        
@@ -176,7 +176,7 @@ public class OracleOfertaProducto implements OfertaProducDao{
                 bOfertaProducto = new OfertaProducto();
                 bOfertaProducto.setOfertaId(rs.getInt(1));
                 bOfertaProducto.setProductoId(rs.getInt(2));                
-                cOfertaProducto.add(bOfertaProducto);
+                
             }
             rs.close();
             
@@ -186,6 +186,6 @@ public class OracleOfertaProducto implements OfertaProducDao{
         {
             e.printStackTrace();
         }
-        return cOfertaProducto;
+        return bOfertaProducto;
     }
 }

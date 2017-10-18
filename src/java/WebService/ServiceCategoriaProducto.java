@@ -21,6 +21,7 @@ import javax.jws.WebParam;
 public class ServiceCategoriaProducto {
 
    List<CategoriaProducto> categoriaProducto;
+   
     //comienzo de los webServices
     
     @WebMethod(operationName = "obtenerCategoriaProducto")        
@@ -49,7 +50,9 @@ public class ServiceCategoriaProducto {
 
     
     @WebMethod(operationName = "modificarCategoriaProducto")        
-    public void modificarCategoriaProducto(@WebParam(name = "categoriaProducto") CategoriaProducto categoriaProducto)  
+    public void modificarCategoriaProducto(@WebParam(name = "categoriaProducto") CategoriaProducto categoriaProducto
+                                         
+            )  
     {
         try{
         CategoriaProducDao dao = new OracleCategoriaProducto();      
@@ -71,14 +74,15 @@ public class ServiceCategoriaProducto {
     }
     
     @WebMethod(operationName = "buscarCategoriaProducto")        
-    public List<CategoriaProducto> buscarCategoriaProducto(@WebParam(name = "id") Integer id)  
+    public CategoriaProducto buscarCategoriaProducto(@WebParam(name = "id") Integer id)  
     {
+        CategoriaProducto cat = new CategoriaProducto();
         try{
         CategoriaProducDao dao = new OracleCategoriaProducto();      
-        categoriaProducto = dao.buscarCategoriaProducto(id);
+        cat = dao.buscarCategoriaProducto(id);
         }
         catch(Exception ex)
         {}
-        return categoriaProducto;
+        return cat;
     }
 }

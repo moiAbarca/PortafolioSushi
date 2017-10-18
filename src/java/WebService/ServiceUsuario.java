@@ -71,14 +71,15 @@ public class ServiceUsuario {
     }
     
     @WebMethod(operationName = "buscarUsuario")        
-    public List<Usuario> buscarUsuario(@WebParam(name = "id") Integer id)  
+    public Usuario buscarUsuario(@WebParam(name = "id") Integer id)  
     {
+        Usuario us = new Usuario();
         try{
         UsuarioDao dao = new OracleUsuario();
-        Usuario = dao.buscarUsuario(id);
+        us = dao.buscarUsuario(id);
         }
         catch(Exception ex)
         {}
-        return Usuario;
+        return us;
     }
 }

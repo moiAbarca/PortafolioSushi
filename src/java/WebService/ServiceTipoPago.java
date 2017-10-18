@@ -71,14 +71,15 @@ public class ServiceTipoPago {
     }
     
     @WebMethod(operationName = "buscarTipoPago")        
-    public List<TipoPago> buscarTipoPago(@WebParam(name = "id") Integer id)  
+    public TipoPago buscarTipoPago(@WebParam(name = "id") Integer id)  
     {
+        TipoPago tip = new TipoPago();
         try{
         TipoPagoDao dao = new OracleTipoPago();   
-        TipoPago = dao.buscarTipoPago(id);
+        tip = dao.buscarTipoPago(id);
         }
         catch(Exception ex)
         {}
-        return TipoPago;
+        return tip;
     }
 }

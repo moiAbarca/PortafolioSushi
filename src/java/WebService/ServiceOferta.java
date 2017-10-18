@@ -72,14 +72,15 @@ public class ServiceOferta {
     }
     
     @WebMethod(operationName = "buscarOferta")        
-    public List<Oferta> buscarOferta(@WebParam(name = "id") Integer id)  
+    public Oferta buscarOferta(@WebParam(name = "id") Integer id)  
     {
+        Oferta of = new Oferta();
         try{
         OfertaDao dao = new OracleOferta();      
-        Oferta = dao.buscarOferta(id);
+        of = dao.buscarOferta(id);
         }
         catch(Exception ex)
         {}
-        return Oferta;
+        return of;
     }
 }

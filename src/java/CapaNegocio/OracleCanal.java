@@ -151,8 +151,8 @@ public class OracleCanal implements CanalDao{
     }
 
     @Override
-    public List<Canal> buscarCanal(Integer id) throws SQLException {
-        List<Canal> cCanal = new ArrayList<Canal>();        
+    public Canal buscarCanal(Integer id) throws SQLException {
+        
         Canal bCanal = new Canal();
         String sql = null;
         Connection con = null;        
@@ -180,7 +180,7 @@ public class OracleCanal implements CanalDao{
                 bCanal = new Canal();
                 bCanal.setCanalId(rs.getInt(1));
                 bCanal.setNombreCanal(rs.getString(2));                
-                cCanal.add(bCanal);
+                
             }
             rs.close();
             
@@ -190,6 +190,6 @@ public class OracleCanal implements CanalDao{
         {
             e.printStackTrace();
         }
-        return cCanal;
+        return bCanal;
     }
 }

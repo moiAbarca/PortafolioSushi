@@ -18,5 +18,5 @@ public interface PedidoDetalleDao {
     public void agregarPedidoDetalle(PedidoDetalle pedidoDetalle) throws SQLException;
     public void modificarPedidoDetalle(PedidoDetalle pedidoDetalle) throws SQLException;
     public void eliminarPedidoDetalle(Integer id) throws SQLException;
-    public List<PedidoDetalle> buscarPedidoDetalle(Integer id) throws SQLException;
+    public PedidoDetalle buscarPedidoDetalle(Integer id) throws SQLException;
 }

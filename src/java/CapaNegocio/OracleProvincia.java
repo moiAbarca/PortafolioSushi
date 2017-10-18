@@ -149,8 +149,8 @@ public class OracleProvincia implements ProvinciaDao{
     }
 
     @Override
-    public List<Provincia> buscarProvincia(Integer id) throws SQLException {
-        List<Provincia> cProvincia = new ArrayList<Provincia>();        
+    public Provincia buscarProvincia(Integer id) throws SQLException {
+        
         Provincia bProvincia = new Provincia();
         String sql = null;
         Connection con = null;        
@@ -179,7 +179,7 @@ public class OracleProvincia implements ProvinciaDao{
                 bProvincia.setProvinciaId(rs.getInt(1));
                 bProvincia.setRegionId(rs.getInt(2));
                 bProvincia.setProvinciaNombre(rs.getString(3));
-                cProvincia.add(bProvincia);
+                
             }
             rs.close();
             
@@ -189,6 +189,6 @@ public class OracleProvincia implements ProvinciaDao{
         {
             e.printStackTrace();
         }
-        return cProvincia;
+        return bProvincia;
     }
 }

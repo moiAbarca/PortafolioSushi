@@ -159,8 +159,8 @@ public class OraclePedidoDetalle implements PedidoDetalleDao{
     }
 
     @Override
-    public List<PedidoDetalle> buscarPedidoDetalle(Integer id) throws SQLException {
-        List<PedidoDetalle> cPedidoDetalle = new ArrayList<PedidoDetalle>();        
+    public PedidoDetalle buscarPedidoDetalle(Integer id) throws SQLException {
+        
         PedidoDetalle bPedidoDetalle = new PedidoDetalle();
         String sql = null;
         Connection con = null;        
@@ -192,7 +192,7 @@ public class OraclePedidoDetalle implements PedidoDetalleDao{
                 bPedidoDetalle.setCantidad(rs.getInt(4));
                 bPedidoDetalle.setFechaPedidoDetalle(rs.getString(5));
                 bPedidoDetalle.setHoraPedidoDetalle(rs.getString(6));
-                cPedidoDetalle.add(bPedidoDetalle);
+                
             }
             rs.close();
             
@@ -202,6 +202,6 @@ public class OraclePedidoDetalle implements PedidoDetalleDao{
         {
             e.printStackTrace();
         }
-        return cPedidoDetalle;
+        return bPedidoDetalle;
     }
 }

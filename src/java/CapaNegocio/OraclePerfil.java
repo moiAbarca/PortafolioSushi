@@ -137,8 +137,8 @@ public class OraclePerfil implements PerfilDao{
     }
 
     @Override
-    public List<Perfil> buscarPerfil(Integer id) throws SQLException {
-        List<Perfil> cPerfil = new ArrayList<Perfil>();        
+    public Perfil buscarPerfil(Integer id) throws SQLException {
+             
         Perfil bPerfil = new Perfil();
         String sql = null;
         Connection con = null;        
@@ -167,7 +167,7 @@ public class OraclePerfil implements PerfilDao{
                 bPerfil.setPerfilId(rs.getInt(1));
                 bPerfil.setNombrePerfil(rs.getString(2));
                 bPerfil.setAccesoId(rs.getInt(3));
-                cPerfil.add(bPerfil);
+                
             }
             rs.close();
             
@@ -177,6 +177,6 @@ public class OraclePerfil implements PerfilDao{
         {
             e.printStackTrace();
         }
-        return cPerfil;
+        return bPerfil;
     }
 }

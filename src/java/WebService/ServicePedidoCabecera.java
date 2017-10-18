@@ -71,14 +71,15 @@ public class ServicePedidoCabecera {
     }
     
     @WebMethod(operationName = "buscarPedidoCabecera")        
-    public List<PedidoCabecera> buscarPedidoCabecera(@WebParam(name = "id") Integer id)  
+    public PedidoCabecera buscarPedidoCabecera(@WebParam(name = "id") Integer id)  
     {
+        PedidoCabecera pec = new PedidoCabecera();
         try{
         PedidoCabeceraDao dao = new OraclePedidoCabecera();      
-        PedidoCabecera = dao.buscarPedidoCabecera(id);
+        pec = dao.buscarPedidoCabecera(id);
         }
         catch(Exception ex)
         {}
-        return PedidoCabecera;
+        return pec;
     }
 }

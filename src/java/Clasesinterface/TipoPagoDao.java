@@ -18,5 +18,5 @@ public interface TipoPagoDao {
     public void agregarTipoPago(TipoPago tipoPago) throws SQLException;
     public void modificarTipoPago(TipoPago tipoPago) throws SQLException;
     public void eliminarTipoPago(Integer id) throws SQLException;
-    public List<TipoPago> buscarTipoPago(Integer id) throws SQLException;
+    public TipoPago buscarTipoPago(Integer id) throws SQLException;
 }

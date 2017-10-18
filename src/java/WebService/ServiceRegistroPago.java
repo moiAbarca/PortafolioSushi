@@ -71,14 +71,15 @@ public class ServiceRegistroPago {
     }
     
     @WebMethod(operationName = "buscarResgistroPago")        
-    public List<ResgistroPago> buscarResgistroPago(@WebParam(name = "id") Integer id)  
+    public ResgistroPago buscarResgistroPago(@WebParam(name = "id") Integer id)  
     {
+        ResgistroPago reg = new ResgistroPago();
         try{
         RegistroPagoDao dao = new OracleRegistroPago(); 
-        ResgistroPago = dao.buscarResgistroPago(id);
+        reg = dao.buscarResgistroPago(id);
         }
         catch(Exception ex)
         {}
-        return ResgistroPago;
+        return reg;
     }
 }

@@ -18,5 +18,5 @@ public interface UsuarioDao {
     public void agregarUsuario(Usuario usuario) throws SQLException;
     public void modificarUsuario(Usuario usuario) throws SQLException;
     public void eliminarUsuario(Integer id) throws SQLException;
-    public List<Usuario> buscarUsuario(Integer id) throws SQLException;
+    public Usuario buscarUsuario(Integer id) throws SQLException;
 }

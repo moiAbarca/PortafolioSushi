@@ -18,5 +18,5 @@ public interface PaginaDao {
     public void agregarPagina(Pagina pagina) throws SQLException;
     public void modificarPagina(Pagina pagina) throws SQLException;
     public void eliminarPagina(Integer id) throws SQLException;
-    public List<Pagina> buscarPagina(Integer id) throws SQLException;
+    public Pagina buscarPagina(Integer id) throws SQLException;
 }

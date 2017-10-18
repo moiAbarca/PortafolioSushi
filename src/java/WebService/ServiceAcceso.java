@@ -8,6 +8,7 @@ package WebService;
 import CapaDTO.Acceso;
 import CapaNegocio.OracleAcceso;
 import Clasesinterface.AccesoDao;
+import java.util.ArrayList;
 import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -20,7 +21,7 @@ import javax.jws.WebParam;
 @WebService(serviceName = "ServiceAcceso")
 public class ServiceAcceso {
     //lista de tipo Acceso
-    List<Acceso> acceso;
+    List<Acceso> lstacceso;
     
     //comienzo de los webServices    
     @WebMethod(operationName = "obtenerAcceso")        
@@ -28,17 +29,17 @@ public class ServiceAcceso {
     {
         try{        
         AccesoDao dao = new OracleAcceso();      
-        acceso = dao.obtenerAcceso();        
+        lstacceso = dao.obtenerAcceso();        
         }
         catch(Exception ex)
         {}
-        return acceso;
+        return lstacceso;
     }
     
     @WebMethod(operationName = "agregaAcceso")        
     public void agregaAcceso(@WebParam(name = "acceso") Acceso acceso)  
-    {
-        try{
+    {        
+        try{        
         AccesoDao dao = new OracleAcceso();
         dao.agregarAcceso(acceso);
         }
@@ -71,8 +72,9 @@ public class ServiceAcceso {
     }
     
     @WebMethod(operationName = "buscarAcceso")        
-    public List<Acceso> buscarAcceso(@WebParam(name = "id") Integer id)  
+    public Acceso buscarAcceso(@WebParam(name = "id") Integer id)  
     {
+        Acceso acceso = new Acceso();
         try{
         AccesoDao dao = new OracleAcceso();
         acceso = dao.buscarAcceso(id);

@@ -146,8 +146,8 @@ public class OracleTipoPago implements TipoPagoDao{
     }
 
     @Override
-    public List<TipoPago> buscarTipoPago(Integer id) throws SQLException {
-        List<TipoPago> cTipoPago = new ArrayList<TipoPago>();        
+    public TipoPago buscarTipoPago(Integer id) throws SQLException {
+        
         TipoPago bTipoPago = new TipoPago();
         String sql = null;
         Connection con = null;        
@@ -175,7 +175,7 @@ public class OracleTipoPago implements TipoPagoDao{
                 bTipoPago = new TipoPago();
                 bTipoPago.setTipoPagoId(rs.getInt(1));
                 bTipoPago.setNombreTipoPago(rs.getString(2));                
-                cTipoPago.add(bTipoPago);
+                
             }
             rs.close();
             
@@ -185,6 +185,6 @@ public class OracleTipoPago implements TipoPagoDao{
         {
             e.printStackTrace();
         }
-        return cTipoPago;
+        return bTipoPago;
     }
 }

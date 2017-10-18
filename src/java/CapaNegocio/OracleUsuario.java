@@ -152,8 +152,8 @@ public class OracleUsuario implements UsuarioDao{
     }
 
     @Override
-    public List<Usuario> buscarUsuario(Integer id) throws SQLException {
-        List<Usuario> cUsuario = new ArrayList<Usuario>();        
+    public Usuario buscarUsuario(Integer id) throws SQLException {
+        
         Usuario bUsuario = new Usuario();
         String sql = null;
         Connection con = null;        
@@ -183,7 +183,7 @@ public class OracleUsuario implements UsuarioDao{
                 bUsuario.setPerfilId(rs.getInt(2));
                 bUsuario.setPass(rs.getString(3));
                 bUsuario.setUsuario(rs.getString(4));
-                cUsuario.add(bUsuario);
+                
             }
             rs.close();
             
@@ -193,6 +193,6 @@ public class OracleUsuario implements UsuarioDao{
         {
             e.printStackTrace();
         }
-        return cUsuario;
+        return bUsuario;
     }
 }

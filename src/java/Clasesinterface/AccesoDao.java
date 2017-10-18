@@ -19,5 +19,5 @@ public interface AccesoDao {
     public void agregarAcceso(Acceso acceso) throws SQLException;
     public void modificarAcceso(Acceso acceso) throws SQLException;
     public void eliminarAcceso(Integer id) throws SQLException;
-    public List<Acceso> buscarAcceso(Integer id) throws SQLException;
+    public Acceso buscarAcceso(Integer id) throws SQLException;
 }

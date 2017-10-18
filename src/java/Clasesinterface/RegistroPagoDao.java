@@ -18,5 +18,5 @@ public interface RegistroPagoDao {
     public void agregarResgistroPago(ResgistroPago resgistroPago) throws SQLException;
     public void modificarResgistroPago(ResgistroPago resgistroPago) throws SQLException;
     public void eliminarResgistroPago(Integer id) throws SQLException;
-    public List<ResgistroPago> buscarResgistroPago(Integer id) throws SQLException;
+    public ResgistroPago buscarResgistroPago(Integer id) throws SQLException;
 }

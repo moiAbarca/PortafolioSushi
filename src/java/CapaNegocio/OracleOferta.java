@@ -154,8 +154,8 @@ public class OracleOferta implements OfertaDao{
     }
 
     @Override
-    public List<Oferta> buscarOferta(Integer id) throws SQLException {
-        List<Oferta> cOferta = new ArrayList<Oferta>();        
+    public Oferta buscarOferta(Integer id) throws SQLException {
+        
         Oferta bOferta = new Oferta();
         String sql = null;
         Connection con = null;        
@@ -185,7 +185,7 @@ public class OracleOferta implements OfertaDao{
                 bOferta.setPorcentajeOferta(rs.getInt(2));
                 bOferta.setFechaInicio(rs.getString(3));
                 bOferta.setFechaTermino(rs.getString(4));
-                cOferta.add(bOferta);
+                
             }
             rs.close();
             
@@ -195,6 +195,6 @@ public class OracleOferta implements OfertaDao{
         {
             e.printStackTrace();
         }
-        return cOferta;
+        return bOferta;
     }
 }

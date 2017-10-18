@@ -18,5 +18,5 @@ public interface SeguimientoDao {
     public void agregarSeguimiento(Seguimiento seguimiento) throws SQLException;
     public void modificarSeguimiento(Seguimiento seguimiento) throws SQLException;
     public void eliminarSeguimiento(Integer id) throws SQLException;
-    public List<Seguimiento> buscarSeguimiento(Integer id) throws SQLException;
+    public Seguimiento buscarSeguimiento(Integer id) throws SQLException;
 }

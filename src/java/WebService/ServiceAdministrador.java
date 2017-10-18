@@ -74,14 +74,15 @@ public class ServiceAdministrador {
     }
     
     @WebMethod(operationName = "buscarAdministrador")        
-    public List<Administrador> buscarAdministrador(@WebParam(name = "id") Integer id)  
+    public Administrador buscarAdministrador(@WebParam(name = "id") Integer id)  
     {
+        Administrador adm = new Administrador();
         try{
         AdministradorDao dao = new OracleAdministrador();      
-        administrador = dao.buscarAdministrador(id);
+        adm = dao.buscarAdministrador(id);
         }
         catch(Exception ex)
         {}
-        return administrador;
+        return adm;
     }
 }

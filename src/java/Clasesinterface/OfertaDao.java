@@ -18,5 +18,5 @@ public interface OfertaDao {
     public void agregarOferta(Oferta oferta) throws SQLException;
     public void modificarOferta(Oferta oferta) throws SQLException;
     public void eliminarOferta(Integer id) throws SQLException;
-    public List<Oferta> buscarOferta(Integer id) throws SQLException;
+    public Oferta buscarOferta(Integer id) throws SQLException;
 }

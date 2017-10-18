@@ -81,8 +81,7 @@ public class OracleAcceso implements AccesoDao {
     }
 
     @Override
-    public void agregarAcceso(Acceso acceso) throws SQLException {      
-        Acceso bAcceso = new Acceso();
+    public void agregarAcceso(Acceso acceso) throws SQLException {              
         String sql = null;
         Connection con = null;
         CallableStatement cs = null;         
@@ -156,8 +155,7 @@ public class OracleAcceso implements AccesoDao {
     }
 
     @Override
-    public List<Acceso> buscarAcceso(Integer id) throws SQLException {
-        List<Acceso> cAccesos = new ArrayList<Acceso>();        
+    public Acceso buscarAcceso(Integer id) throws SQLException {        
         Acceso bAcceso = new Acceso();
         String sql = null;
         Connection con = null;        
@@ -186,7 +184,7 @@ public class OracleAcceso implements AccesoDao {
                 bAcceso.setAccesoId(rs.getInt(1));
                 bAcceso.setPaginaId(rs.getInt(2));
                 bAcceso.setPerfilId(rs.getInt(3));
-                cAccesos.add(bAcceso);
+                
             }
             rs.close();
             
@@ -196,6 +194,6 @@ public class OracleAcceso implements AccesoDao {
         {
             e.printStackTrace();
         }
-        return cAccesos;
+        return bAcceso;
     }
 }

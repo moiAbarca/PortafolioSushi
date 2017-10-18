@@ -153,8 +153,8 @@ public class OracleComuna implements ComunaDao{
     }
 
     @Override
-    public List<Comuna> buscarComuna(Integer id) throws SQLException {
-        List<Comuna> cComuna = new ArrayList<Comuna>();        
+    public Comuna buscarComuna(Integer id) throws SQLException {
+        
         Comuna bComuna = new Comuna();
         String sql = null;
         Connection con = null;        
@@ -183,7 +183,7 @@ public class OracleComuna implements ComunaDao{
                 bComuna.setComunaId(rs.getInt(1));
                 bComuna.setProvinciaId(rs.getInt(2));
                 bComuna.setComunaNombre(rs.getString(3));
-                cComuna.add(bComuna);
+                
             }
             rs.close();
             
@@ -193,7 +193,7 @@ public class OracleComuna implements ComunaDao{
         {
             e.printStackTrace();
         }
-        return cComuna;
+        return bComuna;
     }
     
 }

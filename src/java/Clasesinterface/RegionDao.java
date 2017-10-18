@@ -18,5 +18,5 @@ public interface RegionDao {
     public void agregarRegion(Region region) throws SQLException;
     public void modificarRegion(Region region) throws SQLException;
     public void eliminarRegion(Integer id) throws SQLException;
-    public List<Region> buscarRegion(Integer id) throws SQLException;
+    public Region buscarRegion(Integer id) throws SQLException;
 }

@@ -91,7 +91,7 @@ public class OracleCategoriaProducto implements CategoriaProducDao{
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
             cs.setString(1, categoriaProducto.getNombreCategoria());
-            cs.setInt(2, categoriaProducto.getCategoriaProductoId());            
+            cs.setInt(2, categoriaProducto.getCategoriaProductoId());                       
             cs.execute();          
             cs.close();
         }
@@ -150,8 +150,7 @@ public class OracleCategoriaProducto implements CategoriaProducDao{
     }
 
     @Override
-    public List<CategoriaProducto> buscarCategoriaProducto(Integer id) throws SQLException {
-        List<CategoriaProducto> cCategoriaProducto = new ArrayList<CategoriaProducto>();        
+    public CategoriaProducto buscarCategoriaProducto(Integer id) throws SQLException {        
         CategoriaProducto bCategoriaProducto = new CategoriaProducto();
         String sql = null;
         Connection con = null;        
@@ -179,7 +178,7 @@ public class OracleCategoriaProducto implements CategoriaProducDao{
                 bCategoriaProducto = new CategoriaProducto();
                 bCategoriaProducto.setCategoriaProductoId(rs.getInt(1));
                 bCategoriaProducto.setNombreCategoria(rs.getString(2));                
-                cCategoriaProducto.add(bCategoriaProducto);
+                
             }
             rs.close();
             
@@ -189,7 +188,7 @@ public class OracleCategoriaProducto implements CategoriaProducDao{
         {
             e.printStackTrace();
         }
-        return cCategoriaProducto;
+        return bCategoriaProducto;
     }
     
 }

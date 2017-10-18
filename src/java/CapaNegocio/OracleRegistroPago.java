@@ -161,8 +161,8 @@ public class OracleRegistroPago implements RegistroPagoDao{
     }
 
     @Override
-    public List<ResgistroPago> buscarResgistroPago(Integer id) throws SQLException {
-        List<ResgistroPago> cResgistroPago = new ArrayList<ResgistroPago>();        
+    public ResgistroPago buscarResgistroPago(Integer id) throws SQLException {
+        
         ResgistroPago bResgistroPago = new ResgistroPago();
         String sql = null;
         Connection con = null;        
@@ -195,7 +195,7 @@ public class OracleRegistroPago implements RegistroPagoDao{
                 bResgistroPago.setCodigoAutorizacion(rs.getInt(5));
                 bResgistroPago.setNumeroCuotas(rs.getInt(6));
                 bResgistroPago.setMontoTotal(rs.getInt(7));                
-                cResgistroPago.add(bResgistroPago);
+                
             }
             rs.close();
             
@@ -205,6 +205,6 @@ public class OracleRegistroPago implements RegistroPagoDao{
         {
             e.printStackTrace();
         }
-        return cResgistroPago;
+        return bResgistroPago;
     }
 }

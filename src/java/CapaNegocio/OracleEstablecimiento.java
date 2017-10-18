@@ -157,8 +157,8 @@ public class OracleEstablecimiento implements EstablecimientoDao{
     }
 
     @Override
-    public List<Establecimiento> buscarEstablecimiento(Integer id) throws SQLException {
-        List<Establecimiento> cEstablecimiento = new ArrayList<Establecimiento>();        
+    public Establecimiento buscarEstablecimiento(Integer id) throws SQLException {
+        
         Establecimiento bEstablecimiento = new Establecimiento();
         String sql = null;
         Connection con = null;        
@@ -188,7 +188,7 @@ public class OracleEstablecimiento implements EstablecimientoDao{
                 bEstablecimiento.setComunaId(rs.getInt(2));
                 bEstablecimiento.setNombreLocal(rs.getString(3));
                 bEstablecimiento.setDireccion(rs.getString(4));
-                cEstablecimiento.add(bEstablecimiento);
+                
             }
             rs.close();
             
@@ -198,7 +198,7 @@ public class OracleEstablecimiento implements EstablecimientoDao{
         {
             e.printStackTrace();
         }
-        return cEstablecimiento;
+        return bEstablecimiento;
     }
     
 }

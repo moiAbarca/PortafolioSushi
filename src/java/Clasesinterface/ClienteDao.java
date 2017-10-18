@@ -18,5 +18,5 @@ public interface ClienteDao {
     public void agregarCliente(Cliente cliente) throws SQLException;
     public void modificarCliente(Cliente cliente) throws SQLException;
     public void eliminarCliente(Integer id) throws SQLException;
-    public List<Cliente> buscarCliente(Integer id) throws SQLException;
+    public Cliente buscarCliente(Integer id) throws SQLException;
 }

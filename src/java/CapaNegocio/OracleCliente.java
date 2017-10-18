@@ -170,8 +170,8 @@ public class OracleCliente implements ClienteDao{
     }
 
     @Override
-    public List<Cliente> buscarCliente(Integer id) throws SQLException {
-        List<Cliente> cCliente = new ArrayList<Cliente>();        
+    public Cliente buscarCliente(Integer id) throws SQLException {
+        
         Cliente bCliente = new Cliente();
         String sql = null;
         Connection con = null;        
@@ -208,7 +208,7 @@ public class OracleCliente implements ClienteDao{
                 bCliente.setSexo(rs.getString(9));
                 bCliente.setEmail(rs.getString(10));
                 bCliente.setTelefono(rs.getInt(11));                
-                cCliente.add(bCliente);
+                
             }
             rs.close();
             
@@ -218,6 +218,6 @@ public class OracleCliente implements ClienteDao{
         {
             e.printStackTrace();
         }
-        return cCliente;
+        return bCliente;
     }
 }

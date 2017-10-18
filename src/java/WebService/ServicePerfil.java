@@ -71,14 +71,15 @@ public class ServicePerfil {
     }
     
     @WebMethod(operationName = "buscarPerfil")        
-    public List<Perfil> buscarPerfil(@WebParam(name = "id") Integer id)  
+    public Perfil buscarPerfil(@WebParam(name = "id") Integer id)  
     {
+        Perfil per = new Perfil();
         try{
         PerfilDao dao = new OraclePerfil();      
-        Perfil = dao.buscarPerfil(id);
+        per = dao.buscarPerfil(id);
         }
         catch(Exception ex)
         {}
-        return Perfil;
+        return per;
     }
 }

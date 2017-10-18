@@ -18,5 +18,5 @@ public interface ProvinciaDao {
     public void agregarProvincia(Provincia provincia) throws SQLException;
     public void modificarProvincia(Provincia provincia) throws SQLException;
     public void eliminarProvincia(Integer id) throws SQLException;
-    public List<Provincia> buscarProvincia(Integer id) throws SQLException;
+    public Provincia buscarProvincia(Integer id) throws SQLException;
 }

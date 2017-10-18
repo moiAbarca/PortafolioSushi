@@ -155,8 +155,8 @@ public class OracleSeguimiento implements SeguimientoDao{
     }
 
     @Override
-    public List<Seguimiento> buscarSeguimiento(Integer id) throws SQLException {
-        List<Seguimiento> cSeguimiento = new ArrayList<Seguimiento>();        
+    public Seguimiento buscarSeguimiento(Integer id) throws SQLException {
+        
         Seguimiento bSeguimiento = new Seguimiento();
         String sql = null;
         Connection con = null;        
@@ -187,7 +187,7 @@ public class OracleSeguimiento implements SeguimientoDao{
                 bSeguimiento.setRegistro(rs.getString(3));
                 bSeguimiento.setPaginaId(rs.getInt(4));
                 bSeguimiento.setClienteId(rs.getInt(5));
-                cSeguimiento.add(bSeguimiento);
+                
             }
             rs.close();
             
@@ -197,6 +197,6 @@ public class OracleSeguimiento implements SeguimientoDao{
         {
             e.printStackTrace();
         }
-        return cSeguimiento;
+        return bSeguimiento;
     }
 }

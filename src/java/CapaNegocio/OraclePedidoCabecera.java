@@ -162,8 +162,8 @@ public class OraclePedidoCabecera implements PedidoCabeceraDao{
     }
 
     @Override
-    public List<PedidoCabecera> buscarPedidoCabecera(Integer id) throws SQLException {
-        List<PedidoCabecera> cPedidoCabecera = new ArrayList<PedidoCabecera>();        
+    public PedidoCabecera buscarPedidoCabecera(Integer id) throws SQLException {
+        
         PedidoCabecera bPedidoCabecera = new PedidoCabecera();
         String sql = null;
         Connection con = null;        
@@ -196,7 +196,7 @@ public class OraclePedidoCabecera implements PedidoCabeceraDao{
                 bPedidoCabecera.setFechaPedido(rs.getString(5));
                 bPedidoCabecera.setHoraPedido(rs.getString(6));
                 bPedidoCabecera.setEstadoPedido(rs.getString(7));                
-                cPedidoCabecera.add(bPedidoCabecera);
+                
             }
             rs.close();
             
@@ -206,6 +206,6 @@ public class OraclePedidoCabecera implements PedidoCabeceraDao{
         {
             e.printStackTrace();
         }
-        return cPedidoCabecera;
+        return bPedidoCabecera;
     }
 }
