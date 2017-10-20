@@ -84,7 +84,7 @@ public class OracleCliente implements ClienteDao{
         try
         {            
             con = db.getConnection();            
-            sql = "{call FUKUSUKESUSHI.CLIENTE_tapi.ins(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.CLIENTE_tapi.ins(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             cs = con.prepareCall(sql);            
             
             /*
@@ -95,14 +95,14 @@ public class OracleCliente implements ClienteDao{
             cs.setString(1, cliente.getRut());
             cs.setString(2, cliente.getDireccion());
             cs.setString(3, cliente.getApellido());
-            cs.setInt(4, cliente.getClienteId());            
-            cs.setInt(5, cliente.getComunaId());
-            cs.setInt(6, cliente.getTelefono());
-            cs.setString(7, cliente.getEmail());
-            cs.setInt(8, cliente.getUsuarioId());
-            cs.setString(9, cliente.getNombre());
-            cs.setString(10, cliente.getFechaNacimiento());
-            cs.setString(11, cliente.getSexo());
+            //cs.setInt(4, cliente.getClienteId());            
+            cs.setInt(4, cliente.getComunaId());
+            cs.setInt(5, cliente.getTelefono());
+            cs.setString(6, cliente.getEmail());
+            cs.setInt(7, cliente.getUsuarioId());
+            cs.setString(8, cliente.getNombre());
+            cs.setString(9, cliente.getFechaNacimiento());
+            cs.setString(10, cliente.getSexo());
             cs.execute();          
             cs.close();
         }
