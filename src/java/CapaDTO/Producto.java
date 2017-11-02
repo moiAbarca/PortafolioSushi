@@ -11,6 +11,8 @@ package CapaDTO;
  */
 public class Producto {
 
+
+
     
     private int productoId;
     private int categoriaProductoId;
@@ -19,7 +21,7 @@ public class Producto {
     private int precioProducto;
     private String descripcionProducto;
     private String imagenProdcuto;
-    private char disponibilidadProducto;
+    private boolean disponibilidadProducto;
 
     /**
      * @return the productoId
@@ -118,20 +120,18 @@ public class Producto {
     public void setImagenProdcuto(String imagenProdcuto) {
         this.imagenProdcuto = imagenProdcuto;
     }
-    
-    /**
+        /**
      * @return the disponibilidadProducto
      */
-    public char getDisponibilidadProducto() {
+    public boolean isDisponibilidadProducto() {
         return disponibilidadProducto;
     }
 
     /**
      * @param disponibilidadProducto the disponibilidadProducto to set
      */
-    public void setDisponibilidadProducto(char disponibilidadProducto) {
+    public void setDisponibilidadProducto(boolean disponibilidadProducto) {
         this.disponibilidadProducto = disponibilidadProducto;
     }
 
- 
 }

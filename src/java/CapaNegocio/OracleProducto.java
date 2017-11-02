@@ -71,9 +71,8 @@ public class OracleProducto implements ProductoDao{
                 bProducto.setPrecioProducto(rs.getInt(5));
                 bProducto.setDescripcionProducto(rs.getString(6));
                 bProducto.setImagenProdcuto(rs.getString(7));
-                //resulset no tiene un setChar, por lo que es necesario convertirlo
-                String charValueStr=rs.getString(8);
-                bProducto.setDisponibilidadProducto(charValueStr.charAt(0));                
+                bProducto.setDisponibilidadProducto(rs.getBoolean(7));
+                
                 cProducto.add(bProducto);
             }
             rs.close();
@@ -102,11 +101,7 @@ public class OracleProducto implements ProductoDao{
             cs.setString(2, producto.getNombreProducto());
             cs.setString(3, producto.getDescripcionProducto());
             cs.setInt(4, producto.getCategoriaProductoId());
-            //prueba de char y callablestatement            
-            char charToString = producto.getDisponibilidadProducto();
-            String stringValueOf = String.valueOf(charToString);
-            cs.setString(5, stringValueOf);
-            //fin prueba de char 
+            cs.setBoolean(5, producto.isDisponibilidadProducto());
             cs.setInt(6, producto.getPorcionesProdcuto());
             cs.setInt(7, producto.getPrecioProducto());
             cs.setInt(8, producto.getProductoId());            
@@ -136,11 +131,7 @@ public class OracleProducto implements ProductoDao{
             cs.setString(2, producto.getNombreProducto());
             cs.setString(3, producto.getDescripcionProducto());
             cs.setInt(4, producto.getCategoriaProductoId());            
-            //prueba de char y callablestatement            
-            char charToString = producto.getDisponibilidadProducto();
-            String stringValueOf = String.valueOf(charToString);
-            cs.setString(5, stringValueOf);
-            //fin prueba de char             
+            cs.setBoolean(5, producto.isDisponibilidadProducto());       
             cs.setInt(6, producto.getPorcionesProdcuto());
             cs.setInt(7, producto.getPrecioProducto());
             cs.setInt(8, producto.getProductoId());            
@@ -212,9 +203,7 @@ public class OracleProducto implements ProductoDao{
                 bProducto.setPrecioProducto(rs.getInt(5));
                 bProducto.setDescripcionProducto(rs.getString(6));
                 bProducto.setImagenProdcuto(rs.getString(7));
-                //resulset no tiene un setChar, por lo que es necesario convertirlo
-                String charValueStr=rs.getString(8);
-                bProducto.setDisponibilidadProducto(charValueStr.charAt(0));
+                bProducto.setDisponibilidadProducto(rs.getBoolean(7));
                 
             }
             rs.close();

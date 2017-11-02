@@ -49,7 +49,7 @@ public class OraclePerfil implements PerfilDao{
                 bPerfil = new Perfil();
                 bPerfil.setPerfilId(rs.getInt(1));
                 bPerfil.setNombrePerfil(rs.getString(2));
-                bPerfil.setAccesoId(rs.getInt(3));
+                
                 cPerfil.add(bPerfil);
             }
             rs.close();
@@ -72,12 +72,12 @@ public class OraclePerfil implements PerfilDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.PERFIL_tapi.ins(?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.PERFIL_tapi.ins(?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
             cs.setInt(1, perfil.getPerfilId());
             cs.setString(2, perfil.getNombrePerfil());
-            cs.setInt(3, perfil.getAccesoId());
+            
             cs.execute();          
             cs.close();
         }
@@ -98,11 +98,11 @@ public class OraclePerfil implements PerfilDao{
         {            
             con = db.getConnection();
             //llama al update de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.PERFIL_tapi.upd(?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.PERFIL_tapi.upd(?, ?)}";
             cs = con.prepareCall(sql);
             cs.setInt(1, perfil.getPerfilId());
             cs.setString(2, perfil.getNombrePerfil());
-            cs.setInt(3, perfil.getAccesoId());
+            
             cs.execute();          
             cs.close();
         }
@@ -166,7 +166,7 @@ public class OraclePerfil implements PerfilDao{
                 bPerfil = new Perfil();
                 bPerfil.setPerfilId(rs.getInt(1));
                 bPerfil.setNombrePerfil(rs.getString(2));
-                bPerfil.setAccesoId(rs.getInt(3));
+                
                 
             }
             rs.close();
