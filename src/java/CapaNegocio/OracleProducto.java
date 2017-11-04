@@ -190,7 +190,7 @@ public class OracleProducto implements ProductoDao{
                 bProducto.setPrecioProducto(rs.getInt(5));
                 bProducto.setDescripcionProducto(rs.getString(6));
                 bProducto.setImagenProdcuto(rs.getString(7));
-                bProducto.setDisponibilidadProducto(rs.getBoolean(7));
+                bProducto.setDisponibilidadProducto(rs.getBoolean(8));
                 
             }
             rs.close();
