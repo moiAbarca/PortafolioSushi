@@ -81,7 +81,7 @@ public class OracleProducto implements ProductoDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.PRODUCTO_tapi.ins(?, ?, ?, ?, ?, ?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.PRODUCTO_tapi.ins(?, ?, ?, ?, ?, ?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
             cs.setString(1, producto.getImagenProdcuto());
@@ -91,7 +91,7 @@ public class OracleProducto implements ProductoDao{
             cs.setBoolean(5, producto.isDisponibilidadProducto());
             cs.setInt(6, producto.getPorcionesProdcuto());
             cs.setInt(7, producto.getPrecioProducto());
-            cs.setInt(8, producto.getProductoId());            
+            //cs.setInt(8, producto.getProductoId());            
             cs.execute();          
             cs.close();
         }

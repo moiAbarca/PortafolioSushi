@@ -83,11 +83,11 @@ public class OracleRegion implements RegionDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.REGION_tapi.ins(?, ?)}";
+            sql = "{call FUKUSUKESUSHI.REGION_tapi.ins( ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
-            cs.setInt(1, region.getRegionId());
-            cs.setString(2, region.getRegionNombre());            
+            //cs.setInt(1, region.getRegionId());
+            cs.setString(1, region.getRegionNombre());            
             cs.execute();          
             cs.close();
         }

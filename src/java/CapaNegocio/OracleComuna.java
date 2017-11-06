@@ -88,12 +88,12 @@ public class OracleComuna implements ComunaDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.COMUNA_tapi.ins(?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.COMUNA_tapi.ins(?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
             cs.setString(1, comuna.getComunaNombre());
-            cs.setInt(2, comuna.getComunaId());
-            cs.setInt(3, comuna.getProvinciaId());
+            //cs.setInt(2, comuna.getComunaId());
+            cs.setInt(2, comuna.getProvinciaId());
             cs.execute();          
             cs.close();
         }

@@ -88,7 +88,7 @@ public class OracleRegistroPago implements RegistroPagoDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.REGISTRO_PAGO_tapi.ins(?, ?, ?, ?, ?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.REGISTRO_PAGO_tapi.ins(?, ?, ?, ?, ?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
             cs.setInt(1, resgistroPago.getNumeroCuotas());
@@ -96,8 +96,8 @@ public class OracleRegistroPago implements RegistroPagoDao{
             cs.setInt(3, resgistroPago.getPedidoCabeceraId());
             cs.setInt(4, resgistroPago.getCodigoAutorizacion());
             cs.setString(5, resgistroPago.getEstadoPago());
-            cs.setInt(6, resgistroPago.getRegistroPagoId());
-            cs.setInt(7, resgistroPago.getTipoPagoId());           
+            //cs.setInt(6, resgistroPago.getRegistroPagoId());
+            cs.setInt(6, resgistroPago.getTipoPagoId());           
             cs.execute();          
             cs.close();
         }
