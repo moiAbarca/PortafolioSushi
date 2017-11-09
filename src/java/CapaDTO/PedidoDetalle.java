@@ -19,14 +19,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlRootElement(name = "PedidoDetalle")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class PedidoDetalle {
-
     private int pedidoDetalleId;
     private int pedidoCabeceraId;
     private int productoId;
     private int cantidad;
     private String fechaPedidoDetalle;
     private String horaPedidoDetalle;
-    private int total;
 
     /**
      * @return the pedidoDetalleId
@@ -111,19 +109,5 @@ public class PedidoDetalle {
      */
     public void setHoraPedidoDetalle(String horaPedidoDetalle) {
         this.horaPedidoDetalle = horaPedidoDetalle;
-    }
-    
-    /**
-     * @return the total
-     */
-    public int getTotal() {
-        return total;
-    }
-
-    /**
-     * @param total the total to set
-     */
-    public void setTotal(int total) {
-        this.total = total;
     }
 }

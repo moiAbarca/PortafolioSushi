@@ -61,8 +61,7 @@ public class OracleOfertaProducto implements OfertaProducDao{
             {
                 bOfertaProducto = new OfertaProducto();
                 bOfertaProducto.setOfertaId(rs.getInt(1));
-                bOfertaProducto.setProductoId(rs.getInt(2));
-                bOfertaProducto.setOfertas_producto_id(rs.getInt(3));
+                bOfertaProducto.setProductoId(rs.getInt(2));                
                 cOfertaProducto.add(bOfertaProducto);
             }
             rs.close();
@@ -113,8 +112,7 @@ public class OracleOfertaProducto implements OfertaProducDao{
             sql = "{call FUKUSUKESUSHI.OFERTAS_PRODUCTO_tapi.upd(?, ?)}";
             cs = con.prepareCall(sql);
             cs.setInt(1, ofertaProducto.getOfertaId());
-            cs.setInt(2, ofertaProducto.getProductoId());
-            cs.setInt(3, ofertaProducto.getOfertas_producto_id());
+            cs.setInt(2, ofertaProducto.getProductoId());            
             cs.execute();          
             cs.close();
         }
@@ -178,7 +176,7 @@ public class OracleOfertaProducto implements OfertaProducDao{
                 bOfertaProducto = new OfertaProducto();
                 bOfertaProducto.setOfertaId(rs.getInt(1));
                 bOfertaProducto.setProductoId(rs.getInt(2));                
-                bOfertaProducto.setOfertas_producto_id(rs.getInt(3));
+                
             }
             rs.close();
             

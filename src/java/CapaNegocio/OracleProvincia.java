@@ -84,12 +84,12 @@ public class OracleProvincia implements ProvinciaDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.PROVINCIA_tapi.ins( ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.PROVINCIA_tapi.ins(?, ?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
             cs.setInt(1, provincia.getRegionId());
             cs.setString(2, provincia.getProvinciaNombre());
-            //cs.setInt(3, provincia.getProvinciaId());
+            cs.setInt(3, provincia.getProvinciaId());
             cs.execute();          
             cs.close();
         }

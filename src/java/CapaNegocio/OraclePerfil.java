@@ -72,11 +72,11 @@ public class OraclePerfil implements PerfilDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.PERFIL_tapi.ins(?)}";
+            sql = "{call FUKUSUKESUSHI.PERFIL_tapi.ins(?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
-            //cs.setInt(1, perfil.getPerfilId());
-            cs.setString(1, perfil.getNombrePerfil());
+            cs.setInt(1, perfil.getPerfilId());
+            cs.setString(2, perfil.getNombrePerfil());
             
             cs.execute();          
             cs.close();

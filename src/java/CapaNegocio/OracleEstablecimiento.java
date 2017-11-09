@@ -90,13 +90,13 @@ public class OracleEstablecimiento implements EstablecimientoDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.ESTABLECIMIENTO_tapi.ins( ?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.ESTABLECIMIENTO_tapi.ins(?, ?, ?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
             cs.setString(1, establecimiento.getDireccion());
-            //cs.setInt(2, establecimiento.getEstablecimientoId());
-            cs.setInt(2, establecimiento.getComunaId());
-            cs.setString(3, establecimiento.getNombreLocal());
+            cs.setInt(2, establecimiento.getEstablecimientoId());
+            cs.setInt(3, establecimiento.getComunaId());
+            cs.setString(4, establecimiento.getNombreLocal());
             cs.execute();          
             cs.close();
         }

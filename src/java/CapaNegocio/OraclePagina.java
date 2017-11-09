@@ -85,12 +85,12 @@ public class OraclePagina implements PaginaDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.PAGINA_tapi.ins(?, ?)}";
+            sql = "{call FUKUSUKESUSHI.PAGINA_tapi.ins(?, ?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
-            //cs.setInt(1, pagina.getPaginaId());
-            cs.setString(1, pagina.getUrlPagina());
-            cs.setString(2, pagina.getPagina());
+            cs.setInt(1, pagina.getPaginaId());
+            cs.setString(2, pagina.getUrlPagina());
+            cs.setString(3, pagina.getPagina());
             cs.execute();          
             cs.close();
         }

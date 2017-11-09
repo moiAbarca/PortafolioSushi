@@ -89,12 +89,12 @@ public class OracleAcceso implements AccesoDao {
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.ACCESO_tapi.ins( ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.ACCESO_tapi.ins(?, ?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
             cs.setInt(1, acceso.getPerfilId());
             cs.setInt(2, acceso.getPaginaId());
-            //cs.setInt(3, acceso.getAccesoId());
+            cs.setInt(3, acceso.getAccesoId());
             cs.execute();          
             cs.close();
         }
