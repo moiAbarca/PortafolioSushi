@@ -60,9 +60,9 @@ public class OracleUsuario implements UsuarioDao{
             {
                 bUsuario = new Usuario();
                 bUsuario.setUsuarioId(rs.getInt(1));
-                bUsuario.setPerfilId(rs.getInt(2));
-                bUsuario.setPass(rs.getString(3));
-                bUsuario.setUsuario(rs.getString(4));
+                
+                bUsuario.setPass(rs.getString(2));
+                bUsuario.setUsuario(rs.getString(3));
                 cUsuario.add(bUsuario);
             }
             rs.close();
@@ -85,13 +85,13 @@ public class OracleUsuario implements UsuarioDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.USUARIO_tapi.ins(?, ?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.USUARIO_tapi.ins(?, ?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
-            cs.setInt(1, usuario.getPerfilId());
-            cs.setString(2, usuario.getPass());
-            cs.setInt(3, usuario.getUsuarioId());
-            cs.setString(4, usuario.getUsuario());
+            
+            cs.setString(1, usuario.getPass());
+            cs.setInt(2, usuario.getUsuarioId());
+            cs.setString(3, usuario.getUsuario());
             cs.execute();          
             cs.close();
         }
@@ -112,12 +112,12 @@ public class OracleUsuario implements UsuarioDao{
         {            
             con = db.getConnection();
             //llama al update de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.USUARIO_tapi.upd(?, ?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.USUARIO_tapi.upd(?, ?, ?)}";
             cs = con.prepareCall(sql);
-            cs.setInt(1, usuario.getPerfilId());
-            cs.setString(2, usuario.getPass());
-            cs.setInt(3, usuario.getUsuarioId());
-            cs.setString(4, usuario.getUsuario());
+            
+            cs.setString(1, usuario.getPass());
+            cs.setInt(2, usuario.getUsuarioId());
+            cs.setString(3, usuario.getUsuario());
             cs.execute();          
             cs.close();
         }
@@ -180,9 +180,9 @@ public class OracleUsuario implements UsuarioDao{
             {
                 bUsuario = new Usuario();
                 bUsuario.setUsuarioId(rs.getInt(1));
-                bUsuario.setPerfilId(rs.getInt(2));
-                bUsuario.setPass(rs.getString(3));
-                bUsuario.setUsuario(rs.getString(4));
+                
+                bUsuario.setPass(rs.getString(2));
+                bUsuario.setUsuario(rs.getString(3));
                 
             }
             rs.close();

@@ -59,12 +59,18 @@ public class OracleSeguimiento implements SeguimientoDao{
             while(rs.next())
             {
                 bSeguimiento = new Seguimiento();
-                bSeguimiento.setSeguimientoId(rs.getInt(1));
-                bSeguimiento.setCanalId(rs.getInt(2));
-                bSeguimiento.setRegistro(rs.getString(3));
-                bSeguimiento.setPaginaId(rs.getInt(4));
-                bSeguimiento.setClienteId(rs.getInt(5));
+                bSeguimiento.setSeguimientoId(rs.getInt(1));               
+                bSeguimiento.setClienteId(rs.getInt(2));
+                bSeguimiento.setEvento(rs.getString(3));
+                bSeguimiento.setComponente(rs.getString(4));
                 cSeguimiento.add(bSeguimiento);
+                
+                /*
+                SEGUIMIENTO_ID ,
+                CLIENTE_CLIENTE_ID ,
+                EVENTO ,
+                COMPONENTE 
+                */
             }
             rs.close();
             cs.close();
@@ -86,14 +92,15 @@ public class OracleSeguimiento implements SeguimientoDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.SEGUIMIENTO_tapi.ins(?, ?, ?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.SEGUIMIENTO_tapi.ins(?, ?, ?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
-            cs.setString(1, seguimiento.getRegistro());
-            cs.setInt(2, seguimiento.getClienteId());
+            
+            cs.setInt(1, seguimiento.getClienteId());
+            cs.setString(2, seguimiento.getComponente());
             cs.setInt(3, seguimiento.getSeguimientoId());
-            cs.setInt(4, seguimiento.getPaginaId());
-            cs.setInt(5, seguimiento.getCanalId());
+            cs.setString(4, seguimiento.getEvento());
+            
             cs.execute();          
             cs.close();
         }
@@ -114,13 +121,12 @@ public class OracleSeguimiento implements SeguimientoDao{
         {            
             con = db.getConnection();
             //llama al update de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.SEGUIMIENTO_tapi.upd(?, ?, ?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.SEGUIMIENTO_tapi.upd(?, ?, ?, ?)}";
             cs = con.prepareCall(sql);
-            cs.setString(1, seguimiento.getRegistro());
-            cs.setInt(2, seguimiento.getClienteId());
+            cs.setInt(1, seguimiento.getClienteId());
+            cs.setString(2, seguimiento.getComponente());
             cs.setInt(3, seguimiento.getSeguimientoId());
-            cs.setInt(4, seguimiento.getPaginaId());
-            cs.setInt(5, seguimiento.getCanalId());
+            cs.setString(4, seguimiento.getEvento());
             cs.execute();          
             cs.close();
         }
@@ -182,11 +188,10 @@ public class OracleSeguimiento implements SeguimientoDao{
             if(rs.next())
             {
                 bSeguimiento = new Seguimiento();
-                bSeguimiento.setSeguimientoId(rs.getInt(1));
-                bSeguimiento.setCanalId(rs.getInt(2));
-                bSeguimiento.setRegistro(rs.getString(3));
-                bSeguimiento.setPaginaId(rs.getInt(4));
-                bSeguimiento.setClienteId(rs.getInt(5));
+                bSeguimiento.setSeguimientoId(rs.getInt(1));               
+                bSeguimiento.setClienteId(rs.getInt(2));
+                bSeguimiento.setEvento(rs.getString(3));
+                bSeguimiento.setComponente(rs.getString(4));
                 
             }
             rs.close();

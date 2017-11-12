@@ -11,7 +11,7 @@ package CapaDTO;
  */
 public class Usuario {
     private int usuarioId;
-    private int perfilId;
+    
     private String pass;
     private String usuario;
 
@@ -29,19 +29,7 @@ public class Usuario {
         this.usuarioId = usuarioId;
     }
 
-    /**
-     * @return the perfilId
-     */
-    public int getPerfilId() {
-        return perfilId;
-    }
-
-    /**
-     * @param perfilId the perfilId to set
-     */
-    public void setPerfilId(int perfilId) {
-        this.perfilId = perfilId;
-    }
+  
 
     /**
      * @return the pass

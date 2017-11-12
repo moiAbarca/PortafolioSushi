@@ -65,7 +65,7 @@ public class OracleEstablecimiento implements EstablecimientoDao{
             {
                 bEstablecimiento = new Establecimiento();
                 bEstablecimiento.setEstablecimientoId(rs.getInt(1));
-                bEstablecimiento.setComunaId(rs.getInt(2));
+                bEstablecimiento.setComuna(rs.getString(2));
                 bEstablecimiento.setNombreLocal(rs.getString(3));
                 bEstablecimiento.setDireccion(rs.getString(4));
                 cEstablecimiento.add(bEstablecimiento);
@@ -95,7 +95,7 @@ public class OracleEstablecimiento implements EstablecimientoDao{
             //le seteo los 3 parámetros de entrada
             cs.setString(1, establecimiento.getDireccion());
             cs.setInt(2, establecimiento.getEstablecimientoId());
-            cs.setInt(3, establecimiento.getComunaId());
+            cs.setString(3, establecimiento.getComuna());
             cs.setString(4, establecimiento.getNombreLocal());
             cs.execute();          
             cs.close();
@@ -121,7 +121,7 @@ public class OracleEstablecimiento implements EstablecimientoDao{
             cs = con.prepareCall(sql);
             cs.setString(1, establecimiento.getDireccion());
             cs.setInt(2, establecimiento.getEstablecimientoId());
-            cs.setInt(3, establecimiento.getComunaId());
+            cs.setString(3, establecimiento.getComuna());
             cs.setString(4, establecimiento.getNombreLocal());
             cs.execute();          
             cs.close();
@@ -185,7 +185,7 @@ public class OracleEstablecimiento implements EstablecimientoDao{
             {
                 bEstablecimiento = new Establecimiento();
                 bEstablecimiento.setEstablecimientoId(rs.getInt(1));
-                bEstablecimiento.setComunaId(rs.getInt(2));
+                bEstablecimiento.setComuna(rs.getString(2));
                 bEstablecimiento.setNombreLocal(rs.getString(3));
                 bEstablecimiento.setDireccion(rs.getString(4));
                 

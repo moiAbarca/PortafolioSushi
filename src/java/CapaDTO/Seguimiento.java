@@ -10,10 +10,12 @@ package CapaDTO;
  * @author moi
  */
 public class Seguimiento {
+
+    
     private int seguimientoId;
-    private int canalId;
-    private String registro;
-    private int paginaId;
+    
+    private String evento;
+    private String  componente;
     private int clienteId;
 
     /**
@@ -30,47 +32,6 @@ public class Seguimiento {
         this.seguimientoId = seguimientoId;
     }
 
-    /**
-     * @return the canalId
-     */
-    public int getCanalId() {
-        return canalId;
-    }
-
-    /**
-     * @param canalId the canalId to set
-     */
-    public void setCanalId(int canalId) {
-        this.canalId = canalId;
-    }
-
-    /**
-     * @return the registro
-     */
-    public String getRegistro() {
-        return registro;
-    }
-
-    /**
-     * @param registro the registro to set
-     */
-    public void setRegistro(String registro) {
-        this.registro = registro;
-    }
-
-    /**
-     * @return the paginaId
-     */
-    public int getPaginaId() {
-        return paginaId;
-    }
-
-    /**
-     * @param paginaId the paginaId to set
-     */
-    public void setPaginaId(int paginaId) {
-        this.paginaId = paginaId;
-    }
 
     /**
      * @return the clienteId
@@ -84,5 +45,33 @@ public class Seguimiento {
      */
     public void setClienteId(int clienteId) {
         this.clienteId = clienteId;
+    }
+    
+    /**
+     * @return the evento
+     */
+    public String getEvento() {
+        return evento;
+    }
+
+    /**
+     * @param evento the evento to set
+     */
+    public void setEvento(String evento) {
+        this.evento = evento;
+    }
+
+    /**
+     * @return the componente
+     */
+    public String getComponente() {
+        return componente;
+    }
+
+    /**
+     * @param componente the componente to set
+     */
+    public void setComponente(String componente) {
+        this.componente = componente;
     }
 }

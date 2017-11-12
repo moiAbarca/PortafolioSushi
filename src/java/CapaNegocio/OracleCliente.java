@@ -53,7 +53,7 @@ public class OracleCliente implements ClienteDao{
                 bCliente = new Cliente();
                 bCliente.setClienteId(rs.getInt(1));
                 bCliente.setUsuarioId(rs.getInt(2));
-                bCliente.setComunaId(rs.getInt(3));
+                bCliente.setComuna(rs.getString(3));
                 bCliente.setRut(rs.getString(4));
                 bCliente.setNombre(rs.getString(5));
                 bCliente.setApellido(rs.getString(6));
@@ -96,7 +96,7 @@ public class OracleCliente implements ClienteDao{
             cs.setString(2, cliente.getDireccion());
             cs.setString(3, cliente.getApellido());
             cs.setInt(4, cliente.getClienteId());            
-            cs.setInt(5, cliente.getComunaId());
+            cs.setString(5, cliente.getComuna());
             cs.setInt(6, cliente.getTelefono());
             cs.setString(7, cliente.getEmail());
             cs.setInt(8, cliente.getUsuarioId());
@@ -129,7 +129,7 @@ public class OracleCliente implements ClienteDao{
             cs.setString(2, cliente.getDireccion());
             cs.setString(3, cliente.getApellido());
             cs.setInt(4, cliente.getClienteId());            
-            cs.setInt(5, cliente.getComunaId());
+            cs.setString(5, cliente.getComuna());
             cs.setInt(6, cliente.getTelefono());
             cs.setString(7, cliente.getEmail());
             cs.setInt(8, cliente.getUsuarioId());
@@ -199,7 +199,7 @@ public class OracleCliente implements ClienteDao{
                 bCliente = new Cliente();
                 bCliente.setClienteId(rs.getInt(1));
                 bCliente.setUsuarioId(rs.getInt(2));
-                bCliente.setComunaId(rs.getInt(3));
+                bCliente.setComuna(rs.getString(3));
                 bCliente.setRut(rs.getString(4));
                 bCliente.setNombre(rs.getString(5));
                 bCliente.setApellido(rs.getString(6));

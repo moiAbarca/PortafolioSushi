@@ -39,7 +39,7 @@ public class Pruebas {
         for(int i = 0; i< acceso.size(); i++)
         {
             System.out.println("USUARIO_ID : " + acceso.get(i).getUsuarioId());
-            System.out.println("COMUNA_ID : " + acceso.get(i).getComunaId());
+            System.out.println("COMUNA_ID : " + acceso.get(i).getComuna());
             System.out.println("RUT : " + acceso.get(i).getRut());
             System.out.println("NOMBRE : " + acceso.get(i).getNombre());
             System.out.println("APELLIDO : " + acceso.get(i).getApellido());

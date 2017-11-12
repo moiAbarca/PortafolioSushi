@@ -62,11 +62,11 @@ public class OraclePedidoCabecera implements PedidoCabeceraDao{
                 bPedidoCabecera = new PedidoCabecera();
                 bPedidoCabecera.setPedidoCabeceraId(rs.getInt(1));
                 bPedidoCabecera.setEstablecimientoId(rs.getInt(2));
-                bPedidoCabecera.setCanalId(rs.getInt(3));
-                bPedidoCabecera.setClienteId(rs.getInt(4));
-                bPedidoCabecera.setFechaPedido(rs.getString(5));
-                bPedidoCabecera.setHoraPedido(rs.getString(6));
-                bPedidoCabecera.setEstadoPedido(rs.getString(7));                
+                
+                bPedidoCabecera.setClienteId(rs.getInt(3));
+                bPedidoCabecera.setFechaPedido(rs.getString(4));
+                bPedidoCabecera.setHoraPedido(rs.getString(5));
+                bPedidoCabecera.setEstadoPedido(rs.getString(6));                
                 cPedidoCabecera.add(bPedidoCabecera);
             }
             rs.close();
@@ -89,16 +89,16 @@ public class OraclePedidoCabecera implements PedidoCabeceraDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.PEDIDO_CABECERA_tapi.ins(?, ?, ?,?, ?, ?,?)}";
+            sql = "{call FUKUSUKESUSHI.PEDIDO_CABECERA_tapi.ins( ?, ?,?, ?, ?,?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
             cs.setInt(1, pedidoCabecera.getPedidoCabeceraId());
             cs.setInt(2, pedidoCabecera.getEstablecimientoId());
             cs.setInt(3, pedidoCabecera.getClienteId());
-            cs.setInt(4, pedidoCabecera.getCanalId());
-            cs.setString(5, pedidoCabecera.getHoraPedido());
-            cs.setString(6, pedidoCabecera.getEstadoPedido());
-            cs.setString(7, pedidoCabecera.getFechaPedido());            
+            
+            cs.setString(4, pedidoCabecera.getHoraPedido());
+            cs.setString(5, pedidoCabecera.getEstadoPedido());
+            cs.setString(6, pedidoCabecera.getFechaPedido());            
             cs.execute();          
             cs.close();
         }
@@ -119,15 +119,15 @@ public class OraclePedidoCabecera implements PedidoCabeceraDao{
         {            
             con = db.getConnection();
             //llama al update de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.PEDIDO_CABECERA_tapi.upd(?, ?, ?, ?, ?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.PEDIDO_CABECERA_tapi.upd(?, ?, ?, ?, ?, ?)}";
             cs = con.prepareCall(sql);
             cs.setInt(1, pedidoCabecera.getPedidoCabeceraId());
             cs.setInt(2, pedidoCabecera.getEstablecimientoId());
             cs.setInt(3, pedidoCabecera.getClienteId());
-            cs.setInt(4, pedidoCabecera.getCanalId());
-            cs.setString(5, pedidoCabecera.getHoraPedido());
-            cs.setString(6, pedidoCabecera.getEstadoPedido());
-            cs.setString(7, pedidoCabecera.getFechaPedido());    
+            
+            cs.setString(4, pedidoCabecera.getHoraPedido());
+            cs.setString(5, pedidoCabecera.getEstadoPedido());
+            cs.setString(6, pedidoCabecera.getFechaPedido());    
             cs.execute();          
             cs.close();
         }
@@ -191,11 +191,11 @@ public class OraclePedidoCabecera implements PedidoCabeceraDao{
                 bPedidoCabecera = new PedidoCabecera();
                 bPedidoCabecera.setPedidoCabeceraId(rs.getInt(1));
                 bPedidoCabecera.setEstablecimientoId(rs.getInt(2));
-                bPedidoCabecera.setCanalId(rs.getInt(3));
-                bPedidoCabecera.setClienteId(rs.getInt(4));
-                bPedidoCabecera.setFechaPedido(rs.getString(5));
-                bPedidoCabecera.setHoraPedido(rs.getString(6));
-                bPedidoCabecera.setEstadoPedido(rs.getString(7));                
+                
+                bPedidoCabecera.setClienteId(rs.getInt(3));
+                bPedidoCabecera.setFechaPedido(rs.getString(4));
+                bPedidoCabecera.setHoraPedido(rs.getString(5));
+                bPedidoCabecera.setEstadoPedido(rs.getString(6));                 
                 
             }
             rs.close();

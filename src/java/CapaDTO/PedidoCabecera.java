@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class PedidoCabecera {
     private int pedidoCabeceraId;
     private int establecimientoId;
-    private int canalId;
+    
     private int clienteId;
     private String fechaPedido;
     private String horaPedido;
@@ -56,19 +56,7 @@ public class PedidoCabecera {
         this.establecimientoId = establecimientoId;
     }
 
-    /**
-     * @return the canalId
-     */
-    public int getCanalId() {
-        return canalId;
-    }
 
-    /**
-     * @param canalId the canalId to set
-     */
-    public void setCanalId(int canalId) {
-        this.canalId = canalId;
-    }
 
     /**
      * @return the clienteId

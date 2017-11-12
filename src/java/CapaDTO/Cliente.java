@@ -13,9 +13,11 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * @author moi
  */
 public class Cliente {
+
+    
     private int clienteId;
     private int usuarioId;
-    private int comunaId;
+    private String comuna;
     private String rut;
     private String nombre;
     private String apellido;
@@ -53,18 +55,18 @@ public class Cliente {
         this.usuarioId = usuarioId;
     }
 
-    /**
-     * @return the comunaId
+   /**
+     * @return the comuna
      */
-    public int getComunaId() {
-        return comunaId;
+    public String getComuna() {
+        return comuna;
     }
 
     /**
-     * @param comunaId the comunaId to set
+     * @param comuna the comuna to set
      */
-    public void setComunaId(int comunaId) {
-        this.comunaId = comunaId;
+    public void setComuna(String comuna) {
+        this.comuna = comuna;
     }
 
     /**

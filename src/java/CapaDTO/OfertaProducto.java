@@ -10,8 +10,11 @@ package CapaDTO;
  * @author moi
  */
 public class OfertaProducto {
+
+    
     private int ofertaId;
     private int productoId;
+    private int ofertas_producto_Id;
 
     /**
      * @return the ofertaId
@@ -39,5 +42,19 @@ public class OfertaProducto {
      */
     public void setProductoId(int productoId) {
         this.productoId = productoId;
+    }
+    
+    /**
+     * @return the ofertas_producto_Id
+     */
+    public int getOfertas_producto_Id() {
+        return ofertas_producto_Id;
+    }
+
+    /**
+     * @param ofertas_producto_Id the ofertas_producto_Id to set
+     */
+    public void setOfertas_producto_Id(int ofertas_producto_Id) {
+        this.ofertas_producto_Id = ofertas_producto_Id;
     }
 }
