@@ -82,4 +82,17 @@ public class ServiceUsuario {
         {}
         return us;
     }
+    
+    @WebMethod(operationName = "buscarLogin")        
+    public Usuario buscarLogin(@WebParam(name = "usuario") String usuario)  
+    {
+        Usuario us = new Usuario();
+        try{
+        UsuarioDao dao = new OracleUsuario();
+        us = dao.buscarLogin(usuario);
+        }
+        catch(Exception ex)
+        {}
+        return us;
+    }
 }

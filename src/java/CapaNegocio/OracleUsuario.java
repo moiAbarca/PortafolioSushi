@@ -195,4 +195,40 @@ public class OracleUsuario implements UsuarioDao{
         }
         return bUsuario;
     }
+
+    @Override
+    public Usuario buscarLogin(String usuario) throws SQLException {
+        Usuario bUsuario = new Usuario();
+        String sql = null;
+        Connection con = null;        
+        CallableStatement cs = null;
+        ResultSet rs;
+        try
+        {
+            con = db.getConnection();               
+            sql = ("{call FUKUSUKESUSHI.BUSCAR_LOGIN2(?,?)}");            
+            cs = con.prepareCall(sql);            
+            
+            cs.setString(1, usuario); 
+            cs.registerOutParameter(2, OracleTypes.CURSOR);
+            cs.execute();            
+            rs = (ResultSet)cs.getObject(2);
+            if(rs.next())
+            {
+                bUsuario = new Usuario();
+                bUsuario.setUsuarioId(rs.getInt(1));                
+                bUsuario.setPass(rs.getString(2));
+                bUsuario.setUsuario(rs.getString(3));
+                
+            }
+            rs.close();
+            
+            cs.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return bUsuario;
+    }
 }
